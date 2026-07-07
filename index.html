@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kashyap Vidyapeeth Inaruwa | PG to Grade 10</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Top Contact Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info">
+                <span>📞 +977-9802779301</span>
+                <span>✉️ kvnepal@gmail.com</span>
+                <a href="https://facebook.com" target="_blank" class="social-link">f Facebook</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header with Logo and Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="logo-section">
+                <img src="assets/logo.png" alt="Kashyap Vidyapeeth Logo" class="logo">
+                <div class="school-info">
+                    <h1 class="school-name">Kashyap Vidyapeeth Inaruwa</h1>
+                    <p class="tagline">Excellence in Education | PG to Grade 10</p>
+                </div>
+            </div>
+            <button class="menu-toggle" id="menuToggle">☰</button>
+        </div>
+    </header>
+
+    <!-- Sticky Navigation Menu -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#" class="nav-link" onclick="loadContent('home')">Home</a></li>
+                <li class="dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">About Us</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" onclick="loadContent('mission')">Mission & Vision</a></li>
+                        <li><a href="#" onclick="loadContent('team')">Our Team</a></li>
+                        <li><a href="#" onclick="loadContent('principal')">Principal's Message</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" class="nav-link" onclick="loadContent('academics')">Academics</a></li>
+                <li><a href="#" class="nav-link" onclick="loadContent('life')">Life at KVI</a></li>
+                <li class="dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">Gallery</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" onclick="loadContent('image-gallery')">Image Gallery</a></li>
+                        <li><a href="#" onclick="loadContent('video-gallery')">Video Gallery</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" class="nav-link" onclick="loadContent('downloads')">Downloads</a></li>
+                <li><a href="#" class="nav-link" onclick="loadContent('contact')">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main id="main-content" class="main-content">
+        <!-- Content will be loaded dynamically here -->
+    </main>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget" id="chatWidget">
+        <div class="chat-header">
+            <h3>💬 Chat with us</h3>
+            <button class="chat-close" id="chatClose">−</button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="chat-message bot-message">
+                <p>Hello! 👋 Welcome to Kashyap Vidyapeeth Inaruwa. How can we help you today?</p>
+            </div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chatInput" placeholder="Type your message..." class="chat-input">
+            <button id="chatSend" class="chat-send">Send</button>
+        </div>
+    </div>
+
+    <!-- Chat Toggle Button -->
+    <button class="chat-toggle" id="chatToggle">💬</button>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About KVI</h4>
+                    <p>Kashyap Vidyapeeth Inaruwa is a premier educational institution committed to academic excellence and character development.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#" onclick="loadContent('home')">Home</a></li>
+                        <li><a href="#" onclick="loadContent('mission')">About Us</a></li>
+                        <li><a href="#" onclick="loadContent('academics')">Academics</a></li>
+                        <li><a href="#" onclick="loadContent('contact')">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>📍 Inaruwa-4, Sunsari, Nepal<br>
+                       📞 +977-9802779301<br>
+                       ✉️ kvnepal@gmail.com</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="https://facebook.com" target="_blank" class="social-icon">f</a>
+                        <a href="https://twitter.com" target="_blank" class="social-icon">𝕏</a>
+                        <a href="https://instagram.com" target="_blank" class="social-icon">📷</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Kashyap Vidyapeeth Inaruwa. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Image Modal Lightbox -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeImageModal()">&times;</span>
+        <img class="modal-content" id="modalImage" alt="">
+        <div id="caption"></div>
+        <div class="modal-nav">
+            <button onclick="previousImage()" class="modal-btn">❮ Prev</button>
+            <button onclick="nextImage()" class="modal-btn">Next ❯</button>
+        </div>
+    </div>
+
+    <!-- Special Event Modal -->
+    <div id="eventModal" class="modal event-modal">
+        <div class="modal-dialog">
+            <span class="close" onclick="closeEventModal()">&times;</span>
+            <div class="modal-header">
+                <h2>🎉 Special Event Alert</h2>
+            </div>
+            <div class="modal-body">
+                <h3>Annual Sports Day 2026</h3>
+                <p><strong>Date:</strong> March 15, 2026</p>
+                <p><strong>Time:</strong> 8:00 AM - 3:00 PM</p>
+                <p><strong>Venue:</strong> School Grounds, Inaruwa</p>
+                <p>Join us for our annual sports celebration featuring various athletic competitions, cultural performances, and community engagement. All parents and well-wishers are welcome!</p>
+                <button class="btn btn-primary" onclick="closeEventModal(); loadContent('contact')">Register Your Interest</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
