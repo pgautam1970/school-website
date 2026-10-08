@@ -1,0 +1,2076 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Puru Dai's CV Maker - Professional Biodata & Resume Builder</title>
+<!-- Google Fonts for Modern Typography -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary-color: #2563eb;
+  --primary-dark: #1d4ed8;
+  --primary-light: #eff6ff;
+  --accent-color: #0ea5e9;
+  --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  --surface: #ffffff;
+  --surface-alt: #f8fafc;
+  --ink: #0f172a;
+  --ink-muted: #64748b;
+  --ink-light: #94a3b8;
+  --border: #e2e8f0;
+  --font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+  --shadow-lg: 0 20px 40px -15px rgba(15, 23, 42, 0.15);
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: #f1f5f9;
+  color: var(--ink);
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+}
+button, input, textarea, select { font: inherit; }
+
+.app-wrapper {
+  max-width: 1680px;
+  margin: 0 auto;
+  padding: 20px 24px;
+}
+
+/* Header & Banner */
+.top-nav {
+  background: var(--bg-gradient);
+  color: #fff;
+  border-radius: var(--radius-lg);
+  padding: 16px 28px;
+  margin-bottom: 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  box-shadow: 0 12px 35px -8px rgba(15, 23, 42, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.brand-logo {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  border: 2px solid var(--accent-color);
+  object-fit: cover;
+  box-shadow: 0 0 20px rgba(14, 165, 233, 0.35);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.brand-link:hover .brand-logo { transform: scale(1.08) rotate(2deg); }
+
+.top-nav h1 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.top-nav p {
+  margin: 3px 0 0;
+  color: #94a3b8;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.top-badges {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.badge-pill {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-weight: 700;
+  font-size: 11.5px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Two-column layout */
+.main-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 1200px) {
+  .main-layout { grid-template-columns: 1fr; }
+}
+
+/* Form Panel Styles */
+.panel {
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  padding: 22px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.panel:hover {
+  border-color: #cbd5e1;
+  box-shadow: var(--shadow-md);
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 12px;
+  margin-bottom: 18px;
+}
+.panel-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.panel-title span.badge-num {
+  background: var(--primary-light);
+  color: var(--primary-color);
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.col-1 { grid-column: span 1; }
+.col-2 { grid-column: span 2; }
+.col-3 { grid-column: span 3; }
+
+label.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #475467;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 9px 13px;
+  border: 1px solid #cbd5e1;
+  border-radius: 9px;
+  background: #fff;
+  color: #0f172a;
+  font-size: 13px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+input:focus, textarea:focus, select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  background: #fff;
+}
+textarea {
+  min-height: 70px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+/* Tabs & Section Toggles */
+.custom-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1e293b;
+  cursor: pointer;
+  user-select: none;
+}
+.custom-checkbox input[type="checkbox"] {
+  width: 17px;
+  height: 17px;
+  margin: 0;
+  accent-color: var(--primary-color);
+  cursor: pointer;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #fff;
+  margin-top: 8px;
+}
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.styled-table th {
+  background: #f8fafc;
+  color: #475467;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 10px;
+  border-bottom: 1px solid #e2e8f0;
+  text-align: left;
+}
+.styled-table td {
+  padding: 8px;
+  border-bottom: 1px solid #f1f5f9;
+}
+.styled-table tr:last-child td { border-bottom: none; }
+.styled-table input {
+  padding: 6px 10px;
+  font-size: 12.5px;
+  margin: 0;
+}
+
+/* Button & Preset styling */
+.btn {
+  border: 0;
+  border-radius: 99px;
+  padding: 9px 18px;
+  background: #0f172a;
+  color: #fff;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.06);
+}
+.btn:hover {
+  transform: translateY(-1.5px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+  filter: brightness(1.05);
+}
+.btn:active { transform: translateY(0); }
+.btn-primary { background: var(--primary-color); }
+.btn-secondary { background: #f1f5f9; color: #1e293b; border: 1px solid #cbd5e1; }
+.btn-danger { background: #fee2e2; color: #dc2626; border: 1px solid #fecaca; }
+.btn-small { padding: 5px 12px; font-size: 11.5px; border-radius: 6px; }
+
+.preset-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+.preset-chip {
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  color: #475467;
+  padding: 4px 10px;
+  border-radius: 99px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.preset-chip:hover {
+  background: var(--primary-light);
+  color: var(--primary-color);
+  border-color: #bfdbfe;
+}
+
+/* Design & Template Selectors */
+.template-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 8px;
+}
+.template-btn {
+  background: #fff;
+  border: 1.5px solid #e2e8f0;
+  padding: 8px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #334155;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.template-btn:hover {
+  border-color: #94a3b8;
+  background: #f8fafc;
+}
+.template-btn.active {
+  border-color: var(--primary-color);
+  background: var(--primary-light);
+  color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.preview-container {
+  position: sticky;
+  top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.preview-viewport {
+  background: #cbd5e1;
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.08);
+  min-height: 850px;
+  overflow: hidden;
+}
+
+/* A4 Paper Dimensions: 794px x 1123px at 96 DPI */
+.paper {
+  width: 794px;
+  height: 1123px;
+  background: #fff;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  transform-origin: top center;
+  transition: transform 0.2s ease;
+}
+
+.paper-inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transform-origin: top left;
+  box-sizing: border-box;
+}
+
+/* CV Layout Structure */
+.cv-header {
+  padding: 24px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+}
+
+.cv-name {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+  color: #0f172a;
+}
+.cv-role {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-top: 4px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.cv-contact-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 16px;
+  margin-top: 10px;
+  font-size: 12px;
+  color: #475467;
+}
+.cv-contact-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.cv-contact-item svg {
+  width: 14px;
+  height: 14px;
+  stroke: var(--primary-color);
+  flex-shrink: 0;
+}
+
+.cv-photo-box {
+  flex-shrink: 0;
+  width: 105px;
+  height: 125px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  background: #f8fafc;
+}
+.cv-photo-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cv-body {
+  flex: 1;
+  padding: 10px 30px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cv-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cv-sec-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: #0f172a;
+  border-bottom: 1.5px solid #e2e8f0;
+  padding-bottom: 3px;
+}
+.cv-sec-title svg {
+  width: 15px;
+  height: 15px;
+  stroke: var(--primary-color);
+}
+.cv-sec-title:after {
+  content: "";
+  height: 1px;
+  background: var(--border);
+  flex: 1;
+}
+
+.cv-text {
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: #334155;
+  white-space: pre-line;
+}
+
+/* Details grid inside CV */
+.cv-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 18px;
+  font-size: 12.5px;
+}
+.cv-item {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 6px;
+  padding: 3px 0;
+  border-bottom: 1px dashed #f1f5f9;
+}
+.cv-item b {
+  color: #64748b;
+  font-weight: 600;
+}
+.cv-item span {
+  color: #0f172a;
+  font-weight: 500;
+}
+.cv-full { grid-column: 1 / -1; }
+
+/* Preview Table inside CV */
+.cv-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  margin-top: 3px;
+}
+.cv-table th {
+  background: #f8fafc;
+  color: #334155;
+  font-weight: 700;
+  border: 1px solid #e2e8f0;
+  padding: 5px 8px;
+  text-align: left;
+}
+.cv-table td {
+  border: 1px solid #e2e8f0;
+  padding: 5px 8px;
+  color: #334155;
+}
+
+/* Skills Badges in Preview */
+.cv-skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 2px;
+}
+.cv-skill-pill {
+  background: var(--primary-light);
+  color: var(--primary-color);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  padding: 2px 8px;
+  border-radius: 99px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* Footer / Signature */
+.cv-footer {
+  margin-top: auto;
+  padding: 10px 30px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.cv-declaration {
+  font-size: 10.5px;
+  color: #94a3b8;
+  max-width: 440px;
+  line-height: 1.35;
+  font-style: italic;
+}
+.cv-signature-box {
+  text-align: center;
+  min-width: 140px;
+}
+.cv-signature-box img {
+  max-height: 44px;
+  max-width: 130px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 3px auto;
+}
+.cv-signature-line {
+  border-top: 1px solid #64748b;
+  font-size: 11px;
+  font-weight: 700;
+  color: #475467;
+  padding-top: 3px;
+}
+
+/* ============================================================
+   10 THEME TEMPLATE VARIATIONS
+   ============================================================ */
+/* 01: Modern Executive (Default Clean) */
+.t1 .cv-header { border-bottom: 2.5px solid var(--primary-color); }
+.t1 .cv-sec-title { color: var(--primary-color); }
+
+/* 02: Classic Slate Header */
+.t2 .cv-header { background: #0f172a; color: #fff; }
+.t2 .cv-name { color: #fff; }
+.t2 .cv-role { color: #38bdf8; }
+.t2 .cv-contact-bar { color: #cbd5e1; }
+.t2 .cv-contact-item svg { stroke: #38bdf8; }
+.t2 .cv-photo-box { border-color: #38bdf8; }
+.t2 .cv-sec-title { color: #0f172a; }
+
+/* 03: Executive Sapphire */
+.t3 .cv-header { background: linear-gradient(135deg, var(--primary-color), #1e40af); color: #fff; }
+.t3 .cv-name { color: #fff; }
+.t3 .cv-role { color: #dbeafe; }
+.t3 .cv-contact-bar { color: #eff6ff; }
+.t3 .cv-contact-item svg { stroke: #fff; }
+.t3 .cv-photo-box { border-color: #fff; border-radius: 50px; }
+.t3 .cv-sec-title { color: var(--primary-color); }
+
+/* 04: Elegant Ivory Serif */
+.t4 { font-family: 'Playfair Display', Georgia, serif; }
+.t4 .cv-header { text-align: center; flex-direction: column; align-items: center; border-bottom: 2px solid #b45309; }
+.t4 .cv-sec-title { color: #b45309; border-bottom-color: #d97706; }
+.t4 .cv-photo-box { border-radius: 50%; border-color: #b45309; }
+
+/* 05: Modern Left Accent */
+.t5 { border-left: 14px solid var(--primary-color); }
+.t5 .cv-sec-title { background: #f8fafc; padding: 4px 8px; border-left: 4px solid var(--primary-color); border-bottom: none; }
+.t5 .cv-sec-title:after { display: none; }
+
+/* 06: Minimal Emerald */
+.t6 .cv-header { border-bottom: 2px solid #059669; }
+.t6 .cv-role { color: #059669; }
+.t6 .cv-sec-title { color: #059669; border-bottom-color: #a7f3d0; }
+.t6 .cv-contact-item svg { stroke: #059669; }
+
+/* 07: Nordic Minimalist */
+.t7 { background: #fafafa; }
+.t7 .cv-header { padding-bottom: 12px; }
+.t7 .cv-item { border-bottom: none; background: #fff; padding: 4px 8px; border-radius: 4px; margin-bottom: 2px; }
+.t7 .cv-table th { background: #f1f5f9; }
+
+/* 08: Rose Warm Accent */
+.t8 .cv-header { background: #fff1f2; border-bottom: 3px solid #e11d48; }
+.t8 .cv-role { color: #e11d48; }
+.t8 .cv-sec-title { color: #e11d48; border-bottom-color: #fecdd3; }
+.t8 .cv-contact-item svg { stroke: #e11d48; }
+
+/* 09: Tech Monospace Touch */
+.t9 .cv-header { border-left: 8px solid #0284c7; background: #f0f9ff; }
+.t9 .cv-role { font-family: 'JetBrains Mono', monospace; color: #0284c7; }
+.t9 .cv-sec-title { color: #0284c7; font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+
+/* 10: Charcoal Dark Mode Print */
+.t10 { background: #1e293b; color: #f8fafc; }
+.t10 .cv-name { color: #fff; }
+.t10 .cv-role { color: #38bdf8; }
+.t10 .cv-contact-bar { color: #94a3b8; }
+.t10 .cv-item b { color: #94a3b8; }
+.t10 .cv-item span { color: #f1f5f9; }
+.t10 .cv-sec-title { color: #fff; border-bottom-color: #334155; }
+.t10 .cv-table th { background: #334155; color: #fff; border-color: #475467; }
+.t10 .cv-table td { color: #cbd5e1; border-color: #334155; }
+.t10 .cv-text { color: #cbd5e1; }
+.t10 .cv-signature-line { border-top-color: #94a3b8; color: #cbd5e1; }
+
+/* Floating Toast Notification */
+#toastNotice {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #0f172a;
+  color: #fff;
+  padding: 12px 22px;
+  border-radius: 99px;
+  font-size: 13.5px;
+  font-weight: 600;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(16px);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+#toastNotice.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* Modal Dialog */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.modal-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  max-width: 440px;
+  width: 90%;
+  padding: 24px;
+  box-shadow: var(--shadow-lg);
+  transform: scale(0.95);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.modal-overlay.active .modal-card { transform: scale(1); }
+
+/* Responsive adjustments */
+@media (max-width: 850px) {
+  .app-wrapper { padding: 12px; }
+  .form-grid { grid-template-columns: 1fr; }
+  .col-1, .col-2, .col-3 { grid-column: span 1; }
+  .preview-viewport {
+    padding: 10px 4px;
+    min-height: auto;
+  }
+  .paper {
+    zoom: 0.44;
+    -moz-transform: scale(0.44);
+    margin: 0 auto;
+  }
+}
+
+/* High Fidelity Print Styles */
+@media print {
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+    overflow: hidden !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  .top-nav, .form-column, .action-toolbar, .modal-overlay, #toastNotice, .preview-toolbar {
+    display: none !important;
+  }
+  .main-layout { display: block !important; }
+  .preview-viewport {
+    background: transparent !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+  }
+  .paper {
+    box-shadow: none !important;
+    width: 210mm !important;
+    height: 297mm !important;
+    max-height: 297mm !important;
+    zoom: 1 !important;
+    transform: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    page-break-inside: avoid !important;
+    page-break-after: avoid !important;
+  }
+  @page { size: A4 portrait; margin: 0; }
+}
+</style>
+</head>
+<body>
+
+<div class="app-wrapper">
+
+<header class="top-nav">
+  <a href="https://www.youtube.com/@TechnicalDari" target="_blank" class="brand-link" title="Visit Puru Dai YouTube Channel">
+    <img src="https://yt3.googleusercontent.com/ytc/AIdro_nyL5TmhVW_bi2L34fNGqsg8XVfm5WQvvMinnB6cIBn=s160-c-k-c0x00ffffff-no-rj" alt="Puru Dai's CV Maker" class="brand-logo" onerror="this.src='https://placehold.co/100x100/2563eb/ffffff?text=PD'">
+    <div>
+      <h1>Puru Dai's CV Maker</h1>
+      <p>Modern Biodata, Resume & Curriculum Vitae Engine</p>
+    </div>
+  </a>
+  <div class="top-badges">
+    <span class="badge-pill">⚡ A4 Auto-Fit Ready</span>
+    <span class="badge-pill" style="color:#4ade80; border-color:rgba(74,222,128,0.3)">Offline Mode</span>
+  </div>
+</header>
+
+<div class="main-layout">
+
+<!-- LEFT COLUMN: Comprehensive Form -->
+<div class="form-column">
+
+  <!-- Step 1: Personal & Bio Details -->
+  <div class="panel">
+    <div class="panel-header">
+      <h2 class="panel-title"><span class="badge-num">1</span> Personal & Identity Information</h2>
+      <button type="button" class="btn btn-secondary btn-small" onclick="demo()">✨ Fill Demo</button>
+    </div>
+
+    <div class="form-grid">
+      <label class="field-group col-2">Full Name
+        <input id="name" placeholder="RAM BAHADUR THAPA" autocomplete="name">
+      </label>
+
+      <label class="field-group col-1">Gender
+        <select id="gender">
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+      </label>
+
+      <!-- Profession / Role with suggestions -->
+      <div class="col-3">
+        <label class="custom-checkbox">
+          <input type="checkbox" id="hasRole" onchange="toggleRole()"> Include Target Role / Profession
+        </label>
+        <div id="roleBox" style="display:none; margin-top:6px;">
+          <input id="role" list="roleSuggestions" placeholder="e.g. Senior Computer Operator, Civil Engineer, Accountant..." oninput="onRoleInputChange()">
+          <datalist id="roleSuggestions">
+            <option value="Computer Operator">
+            <option value="Senior Accountant">
+            <option value="Full Stack Developer">
+            <option value="Civil Site Engineer">
+            <option value="Graphic Designer">
+            <option value="Administrative Officer">
+            <option value="Marketing Specialist">
+            <option value="Staff Nurse / CMA">
+            <option value="High School Educator">
+            <option value="Hotel & Hospitality Manager">
+          </datalist>
+        </div>
+      </div>
+
+      <!-- Date of Birth with BS / AD pickers -->
+      <div class="col-3">
+        <label class="field-group">Date of Birth (Nepali BS or English AD)
+          <div style="display:grid; grid-template-columns: 1fr 1.2fr 1fr 1fr; gap: 8px;">
+            <select id="dobType" onchange="updateDobDropdowns()">
+              <option value="BS">BS (Bikram Sambat)</option>
+              <option value="AD">AD (Gregorian)</option>
+            </select>
+            <select id="dobYear"></select>
+            <select id="dobMonth"></select>
+            <select id="dobDay"></select>
+          </div>
+        </label>
+      </div>
+
+      <label class="field-group col-1">Phone Number
+        <input id="phone" placeholder="+977 98XXXXXXXX">
+      </label>
+
+      <label class="field-group col-1">Email Address
+        <input id="email" type="email" placeholder="ram.thapa@example.com">
+      </label>
+
+      <label class="field-group col-1">Nationality
+        <input id="nationality" value="Nepali">
+      </label>
+
+      <label class="field-group col-1">Religion / Blood Group
+        <input id="religion" placeholder="Hindu / O+ve">
+      </label>
+
+      <label class="field-group col-1">Marital Status
+        <select id="marital" onchange="toggleSpouse()">
+          <option value="Unmarried">Unmarried</option>
+          <option value="Married">Married</option>
+          <option value="Other">Other</option>
+        </select>
+      </label>
+
+      <div class="col-1" id="spouseBox" style="display:none;">
+        <label class="field-group">Spouse Name
+          <input id="spouse" placeholder="Spouse Full Name">
+        </label>
+      </div>
+
+      <label class="field-group col-1">Father's Name
+        <input id="father" placeholder="Hari Bahadur Thapa">
+      </label>
+
+      <label class="field-group col-1">Mother's Name
+        <input id="mother" placeholder="Maya Devi Thapa">
+      </label>
+
+      <label class="field-group col-1">LinkedIn / Portfolio
+        <input id="linkedin" placeholder="linkedin.com/in/username">
+      </label>
+
+      <label class="field-group col-3">Current Address
+        <input id="address" placeholder="Banepa Municipality-04, Kavrepalanchok">
+      </label>
+
+      <label class="field-group col-3">Permanent Address
+        <input id="permanent" placeholder="Dhulikhel-02, Kavrepalanchok, Bagmati Province">
+      </label>
+    </div>
+  </div>
+
+  <!-- Step 2: Auto Profile Summary -->
+  <div class="panel">
+    <div class="panel-header">
+      <h2 class="panel-title"><span class="badge-num">2</span> Executive Profile Summary</h2>
+      <button type="button" id="autoSummaryBtn" class="btn btn-secondary btn-small" onclick="generateSummaryFromRole(true)">⚡ Regenerate</button>
+    </div>
+
+    <label class="custom-checkbox">
+      <input type="checkbox" id="hasSummary" onchange="toggleSummary()"> Display Profile Summary / Objective
+    </label>
+
+    <div id="summaryWrap" style="display:none; margin-top:8px;">
+      <div class="preset-chip-list">
+        <span style="font-size:11px; font-weight:700; color:#64748b; align-self:center;">Quick Presets:</span>
+        <button type="button" class="preset-chip" onclick="applyQuickSummaryRole('Computer Operator')">Computer Operator</button>
+        <button type="button" class="preset-chip" onclick="applyQuickSummaryRole('Senior Accountant')">Accountant</button>
+        <button type="button" class="preset-chip" onclick="applyQuickSummaryRole('Civil Site Engineer')">Civil Engineer</button>
+        <button type="button" class="preset-chip" onclick="applyQuickSummaryRole('Graphic Designer')">Graphic Designer</button>
+        <button type="button" class="preset-chip" onclick="applyQuickSummaryRole('High School Educator')">Teacher</button>
+        <button type="button" class="preset-chip" onclick="applyQuickSummaryRole('Staff Nurse / CMA')">Nurse/Medical</button>
+      </div>
+      <textarea id="summary" placeholder="Write a brief professional summary or click auto-generate based on your profession..." style="margin-top:8px; min-height:85px;"></textarea>
+    </div>
+  </div>
+
+  <!-- Step 3: Education & Academics -->
+  <div class="panel">
+    <div class="panel-header">
+      <h2 class="panel-title"><span class="badge-num">3</span> Academic Qualifications</h2>
+      <button type="button" class="btn btn-secondary btn-small" onclick="addEduRow()">+ Add Degree</button>
+    </div>
+
+    <div class="table-wrapper">
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>Degree / Level</th>
+            <th>Board / Institution</th>
+            <th>Passed Year</th>
+            <th>Score / Division</th>
+            <th style="width:40px; text-align:center;">Action</th>
+          </tr>
+        </thead>
+        <tbody id="inputEduBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Step 4: Work Experience -->
+  <div class="panel">
+    <div class="panel-header">
+      <h2 class="panel-title"><span class="badge-num">4</span> Professional Experience</h2>
+      <button type="button" id="addExpBtn" class="btn btn-secondary btn-small" style="display:none;" onclick="addExpRow()">+ Add Experience</button>
+    </div>
+
+    <label class="custom-checkbox">
+      <input type="checkbox" id="hasExp" onchange="toggleExp()"> Include Work History / Experience
+    </label>
+
+    <div id="expTableContainer" style="display:none; margin-top:8px;">
+      <div class="table-wrapper">
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th>Company / Organization</th>
+              <th>Position / Role</th>
+              <th>Period / Duration</th>
+              <th style="width:40px; text-align:center;">Action</th>
+            </tr>
+          </thead>
+          <tbody id="inputExpBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 5: Skills, Languages, Projects & Additional -->
+  <div class="panel">
+    <div class="panel-header">
+      <h2 class="panel-title"><span class="badge-num">5</span> Skills, Expertise & Attributes</h2>
+    </div>
+
+    <div class="form-grid">
+      <div class="col-3">
+        <label class="custom-checkbox">
+          <input type="checkbox" id="hasSkills" onchange="toggleSkills()"> Include Technical / Core Skills
+        </label>
+        <textarea id="skills" placeholder="• MS Office Suite, Tally ERP, Fast Typing&#10;• Strategic Team Leadership, Communication&#10;• Creative Problem Solving" style="display:none; margin-top:6px;"></textarea>
+      </div>
+
+      <label class="field-group col-3">Languages Known
+        <input id="languages" placeholder="Nepali (Native), English (Fluent), Hindi (Conversational)">
+      </label>
+
+      <div class="col-3">
+        <label class="custom-checkbox">
+          <input type="checkbox" id="hasProjects" onchange="toggleProjects()"> Include Key Achievements / Certifications
+        </label>
+        <textarea id="projects" placeholder="• Certified in Advanced Financial Accounting (Tally 9)&#10;• Successfully led IT computer migration project" style="display:none; margin-top:6px;"></textarea>
+      </div>
+
+      <label class="field-group col-3">Additional Information & Hobbies
+        <textarea id="additional" placeholder="• Valid Driving License (Category A & B)&#10;• Passionate about reading, social tech volunteering"></textarea>
+      </label>
+    </div>
+  </div>
+
+  <!-- Step 6: Visual Assets (Photo & Signature) -->
+  <div class="panel">
+    <div class="panel-header">
+      <h2 class="panel-title"><span class="badge-num">6</span> Photo & Digital Signature</h2>
+    </div>
+
+    <div class="form-grid">
+      <label class="field-group col-1">Upload Passport Photo
+        <input id="photo" type="file" accept="image/*">
+      </label>
+
+      <label class="field-group col-1">Photo Layout
+        <select id="photoPos">
+          <option value="right">Right Aligned (Standard)</option>
+          <option value="left">Left Aligned</option>
+        </select>
+      </label>
+
+      <div class="col-1">
+        <label class="custom-checkbox">
+          <input type="checkbox" id="hasSig" onchange="toggleSig()"> Digital Signature
+        </label>
+        <input id="signature" type="file" accept="image/*" style="display:none; margin-top:6px;">
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- RIGHT COLUMN: Templates, Theme Controls & Live Preview -->
+<div class="preview-column">
+  <div class="preview-container">
+
+    <!-- Top Action Toolbar -->
+    <div class="panel action-toolbar" style="margin-bottom:0;">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <button class="btn btn-primary" onclick="prepareAndPrint()">🖨 Print / PDF (A4)</button>
+          <button class="btn btn-secondary" onclick="exportJSON()">📥 Export JSON</button>
+          <button class="btn btn-secondary" onclick="document.getElementById('importFile').click()">📤 Import JSON</button>
+          <input type="file" id="importFile" accept=".json" style="display:none" onchange="importJSON(event)">
+        </div>
+        <button class="btn btn-danger btn-small" onclick="openResetModal()">↻ Reset Form</button>
+      </div>
+    </div>
+
+    <!-- Theme Customizer Panel -->
+    <div class="panel" style="margin-bottom:0;">
+      <div style="display:flex; gap:16px; align-items:center; flex-wrap:wrap; justify-content:space-between;">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <label style="font-size:12.5px; font-weight:700;">Theme Color:</label>
+          <input type="color" id="themeColor" value="#2563eb" style="width:38px; height:34px; padding:2px; cursor:pointer; border-radius:6px;">
+        </div>
+        <div style="display:flex; align-items:center; gap:8px; flex:1; max-width:240px;">
+          <label style="font-size:12.5px; font-weight:700;">Font:</label>
+          <select id="fontStyle" style="padding:6px 10px;">
+            <option value="'Plus Jakarta Sans', sans-serif">Modern Sans (Default)</option>
+            <option value="'Playfair Display', Georgia, serif">Classic Serif (Elegance)</option>
+            <option value="'JetBrains Mono', monospace">Technical Mono</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Template Selector Grid -->
+    <div class="panel" style="margin-bottom:0;">
+      <label style="font-size:12px; font-weight:800; color:#475467; margin-bottom:8px; display:block;">Select Curated Template (10 Styles):</label>
+      <div class="template-grid">
+        <button class="template-btn active" onclick="setDesign(1, this)">01 Modern Exec</button>
+        <button class="template-btn" onclick="setDesign(2, this)">02 Slate Header</button>
+        <button class="template-btn" onclick="setDesign(3, this)">03 Sapphire Blue</button>
+        <button class="template-btn" onclick="setDesign(4, this)">04 Ivory Serif</button>
+        <button class="template-btn" onclick="setDesign(5, this)">05 Left Accent</button>
+        <button class="template-btn" onclick="setDesign(6, this)">06 Emerald Green</button>
+        <button class="template-btn" onclick="setDesign(7, this)">07 Nordic Clean</button>
+        <button class="template-btn" onclick="setDesign(8, this)">08 Coral Accent</button>
+        <button class="template-btn" onclick="setDesign(9, this)">09 Tech Sidebar</button>
+        <button class="template-btn" onclick="setDesign(10, this)">10 Dark Slate</button>
+      </div>
+    </div>
+
+    <!-- Live Document Preview Area -->
+    <div class="preview-viewport">
+      <div id="cvWrapper" class="t1">
+        <div class="paper" id="paper">
+          <div class="paper-inner" id="paperInner">
+
+            <!-- CV Header -->
+            <div class="cv-header" id="cvHeader">
+              <div style="flex:1;">
+                <div class="cv-name" id="pName">RAM BAHADUR THAPA</div>
+                <div class="cv-role" id="pRole" style="display:none;">Computer Operator</div>
+
+                <div class="cv-contact-bar">
+                  <div class="cv-contact-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    <span id="pHeaderPhone">+977 98XXXXXXXX</span>
+                  </div>
+                  <div class="cv-contact-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    <span id="pHeaderEmail">ram.thapa@example.com</span>
+                  </div>
+                  <div class="cv-contact-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    <span id="pHeaderAddress">Banepa, Kavrepalanchok</span>
+                  </div>
+                  <div class="cv-contact-item" id="pHeaderLinkedinItem" style="display:none;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    <span id="pHeaderLinkedin">-</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="cv-photo-box" id="pPhotoBox" style="display:none;">
+                <img id="pPhoto" alt="Profile Photo">
+              </div>
+            </div>
+
+            <!-- CV Main Body -->
+            <div class="cv-body">
+
+              <!-- Profile Summary Section -->
+              <div class="cv-section" id="pSummarySec" style="display:none;">
+                <div class="cv-sec-title">
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+                  Professional Summary
+                </div>
+                <div id="pSummary" class="cv-text">-</div>
+              </div>
+
+              <!-- Personal & Family Information Section -->
+              <div class="cv-section">
+                <div class="cv-sec-title">
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                  Personal & Identity Details
+                </div>
+                <div class="cv-grid">
+                  <div class="cv-item"><b>Date of Birth</b><span id="pDob">-</span></div>
+                  <div class="cv-item"><b>Gender</b><span id="pGender">Male</span></div>
+                  <div class="cv-item"><b>Nationality</b><span id="pNationality">Nepali</span></div>
+                  <div class="cv-item"><b>Marital Status</b><span id="pMarital">Unmarried</span></div>
+                  <div class="cv-item" id="pSpouseItem" style="display:none;"><b>Spouse Name</b><span id="pSpouse">-</span></div>
+                  <div class="cv-item"><b>Religion / Blood</b><span id="pReligion">-</span></div>
+                  <div class="cv-item"><b>Father's Name</b><span id="pFather">-</span></div>
+                  <div class="cv-item"><b>Mother's Name</b><span id="pMother">-</span></div>
+                  <div class="cv-item cv-full"><b>Permanent Address</b><span id="pPermanent">-</span></div>
+                </div>
+              </div>
+
+              <!-- Educational Qualifications -->
+              <div class="cv-section">
+                <div class="cv-sec-title">
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+                  Educational Qualifications
+                </div>
+                <table class="cv-table">
+                  <thead>
+                    <tr>
+                      <th>Degree / Level</th>
+                      <th>Board / University</th>
+                      <th>Passed Year</th>
+                      <th>Division / GPA</th>
+                    </tr>
+                  </thead>
+                  <tbody id="pEducationBody">
+                    <tr><td colspan="4" style="text-align:center;">-</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Work Experience Section -->
+              <div class="cv-section" id="pExpSec" style="display:none;">
+                <div class="cv-sec-title">
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                  Professional Work Experience
+                </div>
+                <table class="cv-table">
+                  <thead>
+                    <tr>
+                      <th>Organization / Company</th>
+                      <th>Designation / Role</th>
+                      <th>Duration / Period</th>
+                    </tr>
+                  </thead>
+                  <tbody id="pExpBody">
+                    <tr><td colspan="3" style="text-align:center;">-</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Skills & Key Competencies -->
+              <div class="cv-section" id="pSkillsSec" style="display:none;">
+                <div class="cv-sec-title">
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  Key Skills & Competencies
+                </div>
+                <div id="pSkills" class="cv-text">-</div>
+              </div>
+
+              <!-- Key Achievements / Projects -->
+              <div class="cv-section" id="pProjectsSec" style="display:none;">
+                <div class="cv-sec-title">
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                  Achievements & Certifications
+                </div>
+                <div id="pProjects" class="cv-text">-</div>
+              </div>
+
+              <!-- Languages & Additional Info -->
+              <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+                <div class="cv-section">
+                  <div class="cv-sec-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    Languages
+                  </div>
+                  <div id="pLanguages" class="cv-text">-</div>
+                </div>
+
+                <div class="cv-section">
+                  <div class="cv-sec-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                    Additional Details
+                  </div>
+                  <div id="pAdditional" class="cv-text">-</div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Footer: Legal Declaration & Digital Signature -->
+            <div class="cv-footer">
+              <div class="cv-declaration">
+                I hereby declare that all the particulars and information stated above are true, complete, and correct to the best of my knowledge and belief.
+              </div>
+              <div class="cv-signature-box" id="pSigSec" style="display:none;">
+                <img id="pSignature" alt="Digital Signature">
+                <div class="cv-signature-line">Authorized Signature</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div>
+</div>
+
+<!-- Modal Confirmation Dialog -->
+<div class="modal-overlay" id="confirmModal">
+  <div class="modal-card">
+    <h3 style="margin:0 0 8px; font-size:18px; font-weight:800; color:#0f172a;">Clear All CV Data?</h3>
+    <p style="margin:0 0 20px; font-size:13.5px; color:#64748b; line-height:1.5;">This will permanently reset all entries in your CV to blank. Are you sure you wish to proceed?</p>
+    <div style="display:flex; justify-content:flex-end; gap:10px;">
+      <button type="button" class="btn btn-secondary btn-small" onclick="closeResetModal()">Cancel</button>
+      <button type="button" class="btn btn-danger btn-small" onclick="confirmResetAll()">Yes, Clear All</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast Notice -->
+<div id="toastNotice">Notification</div>
+
+<script>
+const monthsAD = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+const monthsBS = ["Baisakh","Jestha","Ashadh","Shrawan","Bhadra","Ashwin","Kartik","Mangsir","Poush","Magh","Falgun","Chaitra"];
+
+// Dynamic Professional Profile Knowledge Base
+const roleSummaryLibrary = [
+  {
+    keywords: ["computer", "operator", "data entry", "it assistant", "technician"],
+    summary: "Dedicated and detail-oriented Computer Operator with strong technical proficiency in fast bilingual data entry, MS Office Suite, database documentation, and systems administration. Committed to high data fidelity, operational productivity, and seamless administrative workflows."
+  },
+  {
+    keywords: ["account", "finance", "audit", "tax", "bookkeeper"],
+    summary: "Result-driven and meticulous Accounting Professional adept at financial ledger maintenance, balance sheet reconciliation, tax filings, and Tally/ERP management. Proven acumen in ensuring regulatory fiscal compliance and delivering strategic cost insights."
+  },
+  {
+    keywords: ["civil", "site engineer", "overseer", "surveyor", "construction"],
+    summary: "Proactive Civil Engineer with robust practical experience in structural site supervision, AutoCAD architectural drafting, project quantity estimation, and contractor quality compliance. Focused on upholding structural safety and delivering on-schedule project milestones."
+  },
+  {
+    keywords: ["developer", "software", "programmer", "web", "frontend", "full stack"],
+    summary: "Passionate and innovative Software Developer equipped with solid fundamentals in clean software architecture, modern frontend frameworks, responsive UI execution, and robust API integration. Driven by agile problem solving and user-centric software design."
+  },
+  {
+    keywords: ["graphic", "designer", "creative", "ui", "ux", "visual", "illustrator"],
+    summary: "Creative Graphic & Visual Designer experienced in conceptualizing modern branding campaigns, typography, Adobe Creative Cloud suites, and print-ready digital media. Dedicated to creating compelling visual narratives that boost user engagement."
+  },
+  {
+    keywords: ["teacher", "educator", "lecturer", "instructor", "faculty"],
+    summary: "Empathetic and student-centered High School Educator with proven expertise in curriculum development, interactive pedagogy, and fostering inquisitive learning environments. Passionate about students' comprehensive academic and character development."
+  },
+  {
+    keywords: ["nurse", "health", "medical", "cma", "ha", "clinic"],
+    summary: "Certified and compassionate Healthcare Professional skilled in patient triage, acute first-aid, administering doctor-prescribed medication, and maintaining sterile clinical hygiene standards. Deeply committed to patient-first empathetic healthcare."
+  },
+  {
+    keywords: ["sales", "marketing", "business development", "executive"],
+    summary: "Dynamic and client-oriented Sales & Marketing Specialist proficient in lead prospecting, B2B relationship building, promotional digital campaigns, and consistently exceeding quota targets through persuasive communication and market insights."
+  },
+  {
+    keywords: ["hotel", "hospitality", "chef", "food", "guest service"],
+    summary: "Enthusiastic Hospitality Management professional dedicated to exemplary guest service standards, efficient food & beverage coordination, front-desk hospitality, and creating memorable guest experiences."
+  }
+];
+
+function getSummaryForRole(roleText) {
+  if (!roleText || !roleText.trim()) return "";
+  const normalized = roleText.toLowerCase().trim();
+  for (const item of roleSummaryLibrary) {
+    if (item.keywords.some(k => normalized.includes(k))) return item.summary;
+  }
+  return `Motivated, organized, and reliable ${roleText.trim()} with solid functional expertise, integrity, and proactive problem-solving capabilities. Committed to creating substantial organizational value while advancing professional excellence.`;
+}
+
+let userManuallyEditedSummary = false;
+
+function onRoleInputChange() {
+  const roleVal = document.getElementById("role").value.trim();
+  const summaryInput = document.getElementById("summary");
+  if (roleVal && (!summaryInput.value.trim() || !userManuallyEditedSummary)) {
+    const autoSummary = getSummaryForRole(roleVal);
+    if (autoSummary) {
+      summaryInput.value = autoSummary;
+      updateLivePreview();
+      saveToStorage();
+    }
+  }
+}
+
+function generateSummaryFromRole(force = false) {
+  const roleVal = document.getElementById("role").value.trim();
+  const summaryInput = document.getElementById("summary");
+  const hasSummaryChk = document.getElementById("hasSummary");
+
+  if (!roleVal) {
+    showToast("Please enter a profession or title first.");
+    return;
+  }
+
+  summaryInput.value = getSummaryForRole(roleVal);
+  userManuallyEditedSummary = false;
+  hasSummaryChk.checked = true;
+  toggleSummary();
+  updateLivePreview();
+  saveToStorage();
+  showToast("Profile Summary auto-generated for: " + roleVal);
+}
+
+function applyQuickSummaryRole(roleName) {
+  document.getElementById("hasRole").checked = true;
+  toggleRole();
+  document.getElementById("role").value = roleName;
+  generateSummaryFromRole(true);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const summaryEl = document.getElementById("summary");
+  if (summaryEl) {
+    summaryEl.addEventListener("input", () => { userManuallyEditedSummary = true; });
+  }
+});
+
+function showToast(msg) {
+  const t = document.getElementById("toastNotice");
+  if (!t) return;
+  t.textContent = msg;
+  t.classList.add("visible");
+  setTimeout(() => t.classList.remove("visible"), 2600);
+}
+
+function updateDobDropdowns() {
+  const type = document.getElementById("dobType").value;
+  const yearSel = document.getElementById("dobYear");
+  const monthSel = document.getElementById("dobMonth");
+  const daySel = document.getElementById("dobDay");
+
+  const prevY = yearSel.value;
+  const prevM = monthSel.value;
+  const prevD = daySel.value;
+
+  yearSel.innerHTML = '<option value="">Year</option>';
+  monthSel.innerHTML = '<option value="">Month</option>';
+  daySel.innerHTML = '<option value="">Day</option>';
+
+  if (type === "BS") {
+    for (let y = 2085; y >= 2000; y--) yearSel.innerHTML += `<option value="${y}">${y}</option>`;
+    monthsBS.forEach((m, idx) => {
+      let val = String(idx + 1).padStart(2, '0');
+      monthSel.innerHTML += `<option value="${val}">${val} - ${m}</option>`;
+    });
+    for (let d = 1; d <= 32; d++) {
+      let val = String(d).padStart(2, '0');
+      daySel.innerHTML += `<option value="${val}">${val}</option>`;
+    }
+  } else {
+    for (let y = 2026; y >= 1940; y--) yearSel.innerHTML += `<option value="${y}">${y}</option>`;
+    monthsAD.forEach((m, idx) => {
+      let val = String(idx + 1).padStart(2, '0');
+      monthSel.innerHTML += `<option value="${val}">${val} - ${m}</option>`;
+    });
+    for (let d = 1; d <= 31; d++) {
+      let val = String(d).padStart(2, '0');
+      daySel.innerHTML += `<option value="${val}">${val}</option>`;
+    }
+  }
+
+  if (prevY) yearSel.value = prevY;
+  if (prevM) monthSel.value = prevM;
+  if (prevD) daySel.value = prevD;
+
+  updateLivePreview();
+  saveToStorage();
+}
+
+const inputIds = [
+  "name", "role", "summary", "dobType", "dobYear", "dobMonth", "dobDay",
+  "gender", "phone", "email", "linkedin", "address", "permanent", "nationality",
+  "religion", "marital", "spouse", "father", "mother", "skills", "projects", "languages", "additional"
+];
+
+const outputMap = {
+  name: "pName",
+  role: "pRole",
+  summary: "pSummary",
+  gender: "pGender",
+  phone: "pHeaderPhone",
+  email: "pHeaderEmail",
+  address: "pHeaderAddress",
+  permanent: "pPermanent",
+  nationality: "pNationality",
+  religion: "pReligion",
+  marital: "pMarital",
+  spouse: "pSpouse",
+  father: "pFather",
+  mother: "pMother",
+  skills: "pSkills",
+  projects: "pProjects",
+  languages: "pLanguages",
+  additional: "pAdditional"
+};
+
+function setupAutoBullets(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.addEventListener("focus", function() {
+    if (this.value.trim() === "") {
+      this.value = "• ";
+      updateLivePreview();
+      saveToStorage();
+    }
+  });
+  el.addEventListener("keydown", function(e) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const start = this.selectionStart;
+      const end = this.selectionEnd;
+      const val = this.value;
+      const bullet = "\n• ";
+      this.value = val.substring(0, start) + bullet + val.substring(end);
+      this.selectionStart = this.selectionEnd = start + bullet.length;
+      updateLivePreview();
+      saveToStorage();
+    }
+  });
+}
+
+setupAutoBullets("skills");
+setupAutoBullets("projects");
+setupAutoBullets("additional");
+
+inputIds.forEach(id => {
+  const elem = document.getElementById(id);
+  if (elem) {
+    elem.addEventListener("input", () => { updateLivePreview(); saveToStorage(); });
+    elem.addEventListener("change", () => { updateLivePreview(); saveToStorage(); });
+  }
+});
+
+function toggleRole() {
+  const chk = document.getElementById("hasRole").checked;
+  const box = document.getElementById("roleBox");
+  const pRole = document.getElementById("pRole");
+  box.style.display = chk ? "block" : "none";
+  pRole.style.display = chk ? "block" : "none";
+  if (!chk) document.getElementById("role").value = "";
+  else onRoleInputChange();
+  updateLivePreview();
+  saveToStorage();
+}
+
+function toggleSummary() {
+  const chk = document.getElementById("hasSummary").checked;
+  const wrap = document.getElementById("summaryWrap");
+  const sec = document.getElementById("pSummarySec");
+  wrap.style.display = chk ? "block" : "none";
+  sec.style.display = chk ? "block" : "none";
+  if (!chk) {
+    document.getElementById("summary").value = "";
+    userManuallyEditedSummary = false;
+  }
+  updateLivePreview();
+  saveToStorage();
+}
+
+function toggleSpouse() {
+  const marital = document.getElementById("marital").value;
+  const spouseBox = document.getElementById("spouseBox");
+  const pSpouseItem = document.getElementById("pSpouseItem");
+  if (marital === "Married") {
+    spouseBox.style.display = "block";
+    pSpouseItem.style.display = "grid";
+  } else {
+    spouseBox.style.display = "none";
+    pSpouseItem.style.display = "none";
+    document.getElementById("spouse").value = "";
+  }
+  updateLivePreview();
+  saveToStorage();
+}
+
+function toggleExp() {
+  const chk = document.getElementById("hasExp").checked;
+  const container = document.getElementById("expTableContainer");
+  const addBtn = document.getElementById("addExpBtn");
+  const sec = document.getElementById("pExpSec");
+  container.style.display = chk ? "block" : "none";
+  addBtn.style.display = chk ? "inline-flex" : "none";
+  sec.style.display = chk ? "block" : "none";
+  if (!chk) {
+    document.getElementById("inputExpBody").innerHTML = "";
+  } else if (document.querySelectorAll("#inputExpBody tr").length === 0) {
+    addExpRow();
+  }
+  updateLivePreview();
+  saveToStorage();
+}
+
+function toggleSkills() {
+  const chk = document.getElementById("hasSkills").checked;
+  const input = document.getElementById("skills");
+  const sec = document.getElementById("pSkillsSec");
+  input.style.display = chk ? "block" : "none";
+  sec.style.display = chk ? "block" : "none";
+  if (!chk) input.value = "";
+  else if (input.value.trim() === "") input.value = "• ";
+  updateLivePreview();
+  saveToStorage();
+}
+
+function toggleProjects() {
+  const chk = document.getElementById("hasProjects").checked;
+  const input = document.getElementById("projects");
+  const sec = document.getElementById("pProjectsSec");
+  input.style.display = chk ? "block" : "none";
+  sec.style.display = chk ? "block" : "none";
+  if (!chk) input.value = "";
+  else if (input.value.trim() === "") input.value = "• ";
+  updateLivePreview();
+  saveToStorage();
+}
+
+function toggleSig() {
+  const chk = document.getElementById("hasSig").checked;
+  const input = document.getElementById("signature");
+  const sec = document.getElementById("pSigSec");
+  input.style.display = chk ? "block" : "none";
+  sec.style.display = chk ? "block" : "none";
+  if (!chk) {
+    input.value = "";
+    document.getElementById("pSignature").style.display = "none";
+  }
+  updateLivePreview();
+  saveToStorage();
+}
+
+function addEduRow(degree="", board="", year="", gpa="") {
+  const tbody = document.getElementById("inputEduBody");
+  const tr = document.createElement("tr");
+  tr.innerHTML = `
+    <td><input type="text" class="edu-deg" value="${degree}" placeholder="SEE / +2 / Bachelor"></td>
+    <td><input type="text" class="edu-board" value="${board}" placeholder="Board / University"></td>
+    <td><input type="text" class="edu-year" value="${year}" placeholder="2078"></td>
+    <td><input type="text" class="edu-gpa" value="${gpa}" placeholder="3.6 GPA / 75%"></td>
+    <td style="text-align:center;"><button type="button" class="btn btn-danger btn-small" onclick="removeEduRow(this)">✕</button></td>
+  `;
+  tbody.appendChild(tr);
+  tr.querySelectorAll("input").forEach(i => i.addEventListener("input", () => { updateLivePreview(); saveToStorage(); }));
+  updateLivePreview();
+}
+
+function removeEduRow(btn) {
+  btn.closest("tr").remove();
+  updateLivePreview();
+  saveToStorage();
+}
+
+function getEduData() {
+  const rows = document.querySelectorAll("#inputEduBody tr");
+  let data = [];
+  rows.forEach(tr => {
+    const deg = tr.querySelector(".edu-deg").value.trim();
+    const board = tr.querySelector(".edu-board").value.trim();
+    const year = tr.querySelector(".edu-year").value.trim();
+    const gpa = tr.querySelector(".edu-gpa").value.trim();
+    if (deg || board || year || gpa) data.push({ degree: deg, board: board, year: year, gpa: gpa });
+  });
+  return data;
+}
+
+function addExpRow(company="", pos="", duration="") {
+  const tbody = document.getElementById("inputExpBody");
+  const tr = document.createElement("tr");
+  tr.innerHTML = `
+    <td><input type="text" class="exp-comp" value="${company}" placeholder="Tech Solution Pvt. Ltd."></td>
+    <td><input type="text" class="exp-pos" value="${pos}" placeholder="Operator / Officer"></td>
+    <td><input type="text" class="exp-dur" value="${duration}" placeholder="2 Years (2021-2023)"></td>
+    <td style="text-align:center;"><button type="button" class="btn btn-danger btn-small" onclick="removeExpRow(this)">✕</button></td>
+  `;
+  tbody.appendChild(tr);
+  tr.querySelectorAll("input").forEach(i => i.addEventListener("input", () => { updateLivePreview(); saveToStorage(); }));
+  updateLivePreview();
+}
+
+function removeExpRow(btn) {
+  btn.closest("tr").remove();
+  updateLivePreview();
+  saveToStorage();
+}
+
+function getExpData() {
+  const rows = document.querySelectorAll("#inputExpBody tr");
+  let data = [];
+  rows.forEach(tr => {
+    const comp = tr.querySelector(".exp-comp").value.trim();
+    const pos = tr.querySelector(".exp-pos").value.trim();
+    const dur = tr.querySelector(".exp-dur").value.trim();
+    if (comp || pos || dur) data.push({ company: comp, position: pos, duration: dur });
+  });
+  return data;
+}
+
+// Auto-Fit Content Engine for Single-Page A4 Precision
+function autoFitContent() {
+  const paper = document.getElementById("paper");
+  const inner = document.getElementById("paperInner");
+  if (!paper || !inner) return;
+
+  inner.style.transform = 'none';
+  inner.style.width = '100%';
+
+  const maxHeight = paper.clientHeight - 10;
+  let currentHeight = inner.scrollHeight;
+
+  if (currentHeight > maxHeight) {
+    let scale = maxHeight / currentHeight;
+    if (scale < 0.72) scale = 0.72;
+    inner.style.transform = `scale(${scale})`;
+    inner.style.width = `${(100 / scale)}%`;
+  }
+}
+
+function updateLivePreview() {
+  inputIds.forEach(id => {
+    const inputElem = document.getElementById(id);
+    const targetId = outputMap[id];
+    const targetElem = document.getElementById(targetId);
+    if (inputElem && targetElem) {
+      targetElem.textContent = inputElem.value.trim() !== "" ? inputElem.value : "-";
+    }
+  });
+
+  // LinkedIn Header pill
+  const linkedinVal = document.getElementById("linkedin").value.trim();
+  const linkedinItem = document.getElementById("pHeaderLinkedinItem");
+  const linkedinOut = document.getElementById("pHeaderLinkedin");
+  if (linkedinVal) {
+    linkedinItem.style.display = "inline-flex";
+    linkedinOut.textContent = linkedinVal;
+  } else {
+    linkedinItem.style.display = "none";
+  }
+
+  // Date of Birth
+  const type = document.getElementById("dobType").value;
+  const y = document.getElementById("dobYear").value;
+  const m = document.getElementById("dobMonth").value;
+  const d = document.getElementById("dobDay").value;
+  document.getElementById("pDob").textContent = (y && m && d) ? `${y} / ${m} / ${d} (${type})` : "-";
+
+  // Education rows
+  const eduData = getEduData();
+  const eduTbody = document.getElementById("pEducationBody");
+  eduTbody.innerHTML = "";
+  if (eduData.length > 0) {
+    eduData.forEach(item => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td><b>${item.degree || "-"}</b></td>
+        <td>${item.board || "-"}</td>
+        <td>${item.year || "-"}</td>
+        <td>${item.gpa || "-"}</td>
+      `;
+      eduTbody.appendChild(tr);
+    });
+  } else {
+    eduTbody.innerHTML = '<tr><td colspan="4" style="text-align:center; color:#94a3b8;">No qualifications entered</td></tr>';
+  }
+
+  // Experience rows
+  const expData = getExpData();
+  const expTbody = document.getElementById("pExpBody");
+  expTbody.innerHTML = "";
+  if (expData.length > 0) {
+    expData.forEach(item => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td><b>${item.company || "-"}</b></td>
+        <td>${item.position || "-"}</td>
+        <td>${item.duration || "-"}</td>
+      `;
+      expTbody.appendChild(tr);
+    });
+  } else {
+    expTbody.innerHTML = '<tr><td colspan="3" style="text-align:center; color:#94a3b8;">-</td></tr>';
+  }
+
+  setTimeout(autoFitContent, 30);
+}
+
+function prepareAndPrint() {
+  autoFitContent();
+  window.print();
+}
+
+// Photo & Signature Upload Handlers
+document.getElementById("photo").onchange = function() {
+  let file = this.files[0];
+  if (!file) return;
+  let r = new FileReader();
+  r.onload = e => {
+    const box = document.getElementById("pPhotoBox");
+    const img = document.getElementById("pPhoto");
+    img.src = e.target.result;
+    box.style.display = "block";
+    updateLivePreview();
+  };
+  r.readAsDataURL(file);
+};
+
+document.getElementById("signature").onchange = function() {
+  let file = this.files[0];
+  if (!file) return;
+  let r = new FileReader();
+  r.onload = e => {
+    const img = document.getElementById("pSignature");
+    img.src = e.target.result;
+    img.style.display = "block";
+    updateLivePreview();
+  };
+  r.readAsDataURL(file);
+};
+
+document.getElementById("photoPos").onchange = function() {
+  let header = document.getElementById("cvHeader");
+  let photoBox = document.getElementById("pPhotoBox");
+  if (this.value === "left") header.insertBefore(photoBox, header.firstElementChild);
+  else header.appendChild(photoBox);
+  updateLivePreview();
+};
+
+function setDesign(num, btn) {
+  document.getElementById("cvWrapper").className = "t" + num;
+  document.querySelectorAll(".template-btn").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+  updateLivePreview();
+}
+
+document.getElementById("themeColor").addEventListener("input", function() {
+  document.documentElement.style.setProperty('--primary-color', this.value);
+  updateLivePreview();
+});
+
+document.getElementById("fontStyle").addEventListener("change", function() {
+  document.documentElement.style.setProperty('--font-family', this.value);
+  updateLivePreview();
+});
+
+// Demo Data Populator
+function demo() {
+  document.getElementById("hasRole").checked = true;
+  document.getElementById("hasSummary").checked = true;
+  document.getElementById("hasExp").checked = true;
+  document.getElementById("hasSkills").checked = true;
+  document.getElementById("hasProjects").checked = true;
+  document.getElementById("hasSig").checked = true;
+
+  toggleRole();
+  toggleSummary();
+  toggleExp();
+  toggleSkills();
+  toggleProjects();
+  toggleSig();
+
+  document.getElementById("dobType").value = "BS";
+  updateDobDropdowns();
+
+  const demoData = {
+    name: "RAM BAHADUR THAPA",
+    role: "Senior Computer Operator & Administrator",
+    summary: "Dedicated and detail-oriented Computer Operator with strong technical proficiency in fast bilingual data entry, MS Office Suite, database documentation, and systems administration. Committed to high data fidelity, operational productivity, and seamless administrative workflows.",
+    dobType: "BS",
+    dobYear: "2055",
+    dobMonth: "04",
+    dobDay: "12",
+    gender: "Male",
+    phone: "+977 9841234567",
+    email: "ram.thapa@example.com",
+    linkedin: "linkedin.com/in/ram-thapa",
+    address: "Banepa Municipality-04, Kavrepalanchok",
+    permanent: "Dhulikhel-02, Bagmati Province, Nepal",
+    nationality: "Nepali",
+    religion: "Hindu / B+ve",
+    marital: "Unmarried",
+    father: "Hari Bahadur Thapa",
+    mother: "Maya Devi Thapa",
+    skills: "• Advanced MS Office (Excel, Word, PowerPoint)\n• Bilingual Fast Typing (English 55 WPM / Nepali 40 WPM)\n• Computer Hardware Troubleshooting & Networking\n• Tally ERP 9 & Financial Bookkeeping Basics",
+    projects: "• Certified Professional in Advanced Office Automation (Grade A)\n• Successfully digitized 10,000+ public service records during municipal internship\n• Organized IT literacy camp for 100+ local students",
+    languages: "Nepali (Native), English (Fluent), Hindi (Conversational)",
+    additional: "• Clean Two-Wheeler & Light Vehicle Driving License\n• Adaptable to shift schedules and emergency project deadlines"
+  };
+
+  Object.keys(demoData).forEach(k => {
+    if (document.getElementById(k)) document.getElementById(k).value = demoData[k];
+  });
+
+  toggleSpouse();
+
+  // Populate educational qualifications
+  document.getElementById("inputEduBody").innerHTML = "";
+  addEduRow("SEE", "Shree Sanjiwani Model School", "2071 BS", "3.45 GPA");
+  addEduRow("+2 Management", "Chaitanya Multiple College", "2073 BS", "3.20 GPA");
+  addEduRow("Bachelor of Computer Application (BCA)", "Tribhuvan University", "2078 BS", "3.55 GPA");
+
+  // Populate experience
+  document.getElementById("inputExpBody").innerHTML = "";
+  addExpRow("Kavre Tech Solutions Pvt. Ltd.", "Computer & Data Operator", "2.5 Years (2021 - 2023)");
+  addExpRow("Banepa Cooperative Society", "Junior Office Assistant", "1 Year (2020 - 2021)");
+
+  updateLivePreview();
+  saveToStorage();
+  showToast("Demo CV profile populated successfully!");
+}
+
+function openResetModal() {
+  document.getElementById("confirmModal").classList.add("active");
+}
+function closeResetModal() {
+  document.getElementById("confirmModal").classList.remove("active");
+}
+
+function confirmResetAll() {
+  closeResetModal();
+
+  document.getElementById("hasRole").checked = false;
+  document.getElementById("hasSummary").checked = false;
+  document.getElementById("hasExp").checked = false;
+  document.getElementById("hasSkills").checked = false;
+  document.getElementById("hasProjects").checked = false;
+  document.getElementById("hasSig").checked = false;
+
+  toggleRole();
+  toggleSummary();
+  toggleExp();
+  toggleSkills();
+  toggleProjects();
+  toggleSig();
+
+  inputIds.forEach(id => {
+    if (id === "nationality") document.getElementById(id).value = "Nepali";
+    else if (id === "gender") document.getElementById(id).value = "Male";
+    else if (id === "marital") document.getElementById(id).value = "Unmarried";
+    else if (id === "dobType") document.getElementById(id).value = "BS";
+    else document.getElementById(id).value = "";
+  });
+
+  toggleSpouse();
+  document.getElementById("inputEduBody").innerHTML = "";
+  addEduRow();
+
+  document.getElementById("photo").value = "";
+  document.getElementById("signature").value = "";
+  document.getElementById("pPhotoBox").style.display = "none";
+  document.getElementById("pSignature").style.display = "none";
+
+  updateDobDropdowns();
+  updateLivePreview();
+  localStorage.removeItem("puru_cv_maker_data");
+  showToast("Form cleared.");
+}
+
+function saveToStorage() {
+  let data = {};
+  inputIds.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) data[id] = el.value;
+  });
+  data["hasRole"] = document.getElementById("hasRole").checked;
+  data["hasSummary"] = document.getElementById("hasSummary").checked;
+  data["hasExp"] = document.getElementById("hasExp").checked;
+  data["hasSkills"] = document.getElementById("hasSkills").checked;
+  data["hasProjects"] = document.getElementById("hasProjects").checked;
+  data["hasSig"] = document.getElementById("hasSig").checked;
+  data["educationList"] = getEduData();
+  data["experienceList"] = getExpData();
+  localStorage.setItem("puru_cv_maker_data", JSON.stringify(data));
+}
+
+function loadFromStorage() {
+  updateDobDropdowns();
+  let saved = localStorage.getItem("puru_cv_maker_data");
+
+  if (saved) {
+    try {
+      let data = JSON.parse(saved);
+      if (data["dobType"]) {
+        document.getElementById("dobType").value = data["dobType"];
+        updateDobDropdowns();
+      }
+
+      Object.keys(data).forEach(k => {
+        if (document.getElementById(k)) document.getElementById(k).value = data[k];
+      });
+
+      document.getElementById("hasRole").checked = !!data["hasRole"];
+      document.getElementById("hasSummary").checked = !!data["hasSummary"];
+      document.getElementById("hasExp").checked = !!data["hasExp"];
+      document.getElementById("hasSkills").checked = !!data["hasSkills"];
+      document.getElementById("hasProjects").checked = !!data["hasProjects"];
+      document.getElementById("hasSig").checked = !!data["hasSig"];
+
+      toggleRole();
+      toggleSummary();
+      toggleSpouse();
+      toggleExp();
+      toggleSkills();
+      toggleProjects();
+      toggleSig();
+
+      document.getElementById("inputEduBody").innerHTML = "";
+      if (data["educationList"] && data["educationList"].length > 0) {
+        data["educationList"].forEach(i => addEduRow(i.degree, i.board, i.year, i.gpa));
+      } else {
+        addEduRow();
+      }
+
+      document.getElementById("inputExpBody").innerHTML = "";
+      if (data["experienceList"] && data["experienceList"].length > 0) {
+        data["experienceList"].forEach(i => addExpRow(i.company, i.position, i.duration));
+      } else if (data["hasExp"]) {
+        addExpRow();
+      }
+
+      updateLivePreview();
+    } catch(err) {
+      addEduRow();
+    }
+  } else {
+    demo();
+  }
+}
+
+function exportJSON() {
+  let data = {};
+  inputIds.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) data[id] = el.value;
+  });
+  data["hasRole"] = document.getElementById("hasRole").checked;
+  data["hasSummary"] = document.getElementById("hasSummary").checked;
+  data["hasExp"] = document.getElementById("hasExp").checked;
+  data["hasSkills"] = document.getElementById("hasSkills").checked;
+  data["hasProjects"] = document.getElementById("hasProjects").checked;
+  data["hasSig"] = document.getElementById("hasSig").checked;
+  data["educationList"] = getEduData();
+  data["experienceList"] = getExpData();
+
+  let blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+  let a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = `${(data.name || "Curriculum_Vitae").replace(/\s+/g, '_')}_data.json`;
+  a.click();
+  showToast("Exported CV data as JSON!");
+}
+
+function importJSON(e) {
+  let file = e.target.files[0];
+  if (!file) return;
+  let reader = new FileReader();
+  reader.onload = function(evt) {
+    try {
+      let data = JSON.parse(evt.target.result);
+      if (data["dobType"]) {
+        document.getElementById("dobType").value = data["dobType"];
+        updateDobDropdowns();
+      }
+      Object.keys(data).forEach(k => {
+        if (document.getElementById(k)) document.getElementById(k).value = data[k];
+      });
+
+      document.getElementById("hasRole").checked = !!data["hasRole"];
+      document.getElementById("hasSummary").checked = !!data["hasSummary"];
+      document.getElementById("hasExp").checked = !!data["hasExp"];
+      document.getElementById("hasSkills").checked = !!data["hasSkills"];
+      document.getElementById("hasProjects").checked = !!data["hasProjects"];
+      document.getElementById("hasSig").checked = !!data["hasSig"];
+
+      toggleRole();
+      toggleSummary();
+      toggleSpouse();
+      toggleExp();
+      toggleSkills();
+      toggleProjects();
+      toggleSig();
+
+      document.getElementById("inputEduBody").innerHTML = "";
+      if (data["educationList"] && data["educationList"].length > 0) {
+        data["educationList"].forEach(i => addEduRow(i.degree, i.board, i.year, i.gpa));
+      } else {
+        addEduRow();
+      }
+
+      document.getElementById("inputExpBody").innerHTML = "";
+      if (data["experienceList"] && data["experienceList"].length > 0) {
+        data["experienceList"].forEach(i => addExpRow(i.company, i.position, i.duration));
+      } else if (data["hasExp"]) {
+        addExpRow();
+      }
+
+      updateLivePreview();
+      saveToStorage();
+      showToast("CV data imported successfully!");
+    } catch(err) {
+      showToast("Invalid JSON file format.");
+    }
+  };
+  reader.readAsText(file);
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  loadFromStorage();
+  updateLivePreview();
+});
+</script>
+</body>
+</html>
