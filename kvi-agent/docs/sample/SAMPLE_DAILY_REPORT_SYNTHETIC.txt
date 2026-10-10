@@ -1,0 +1,191 @@
+SAMPLE OUTPUT — generated from SYNTHETIC demo conversations (tests/fixtures). Not real school data. Nepali text may not render in every viewer.
+
+KASHYAP VIDYAPEETH INARUWA
+DAILY SCHOOL INTELLIGENCE REPORT
+Reporting date: 2026-10-10
+
+Generated at: 2026-10-11 01:10 NPT
+Data coverage: 8/9 WhatsApp groups + Facebook not connected (manual import only)
+Analysis engine: rules   Report ID: 3eca0d3ead624ed79a857fc643ee7c96
+
+======================================================================
+A. PRINCIPAL'S EXECUTIVE BRIEFING
+----------------------------------------------------------------------
+1. Collected 33 WhatsApp messages from 8 of 9 registered groups and 0 Facebook post(s) for the reporting day.
+2. 2 CRITICAL safety/security signal(s) detected — each is listed in Section B with its evidence and requires verification with the concerned staff before action.
+3. 2 HIGH-priority, time-sensitive matter(s) need prompt leadership attention (Section B/H).
+4. 6 homework/assignment announcement(s) were communicated across class groups.
+5. 10 examination/assessment-related message(s) recorded, including scheduling and preparation updates.
+6. Parents raised 6 question(s); 4 appear answered and 2 remain visibly unanswered in the imported data (Section E).
+7. 2 positive/achievement-related message(s) noted — suitable for recognition (Section I).
+8. 1 complaint/concern message(s) recorded; grouped neutrally in Section E.
+9. Data coverage gap: 1 configured group(s) supplied no data today (Class 4 Parents). Their sections are marked 'data unavailable', not zero activity.
+10. 1 meeting/coordination message(s) shared among educators (Section D).
+
+नेपाली सारांश: आजको सारांश: 8/9 समूहबाट 33 सन्देश र 0 फेसबुक पोस्ट संकलन गरियो। 2 अति गम्भीर सुरक्षा सम्बन्धी कुरा देखियो — तुरुन्तै बुझ्नु आवश्यक छ। 2 उच्च प्राथमिकताका विषय छन्। गृहकार्य सम्बन्धी 6 सन्देश, परीक्षा सम्बन्धी 10 सन्देश पाइयो। अभिभावकका 2 प्रश्न अनुत्तरित देखिन्छन्। 1 समूहको तथ्याङ्क आज उपलब्ध भएन। विस्तृत विवरण तलका खण्डहरूमा प्रमाणसहित दिइएको छ।
+
+======================================================================
+B. CRITICAL & HIGH-PRIORITY ALERTS
+----------------------------------------------------------------------
+
+[CRITICAL] URGENT!!!! Student injured in the school bus accident near the main gate. Please come to school immediately!!!
+  Why: Safety/security terms present in a school context: 'accident', 'injured'. Requires immediate verification with the concerned staff.
+  Sources (1): Class 9 Parents @ 2026-10-10 12:20
+
+  Evidence: "URGENT!!!! Student injured in the school bus accident near the main gate. Please come to school immediately!!!"
+  Next step: Verify immediately with concerned staff and inform Principal   (verified — direct source evidence attached)
+
+[CRITICAL] Please remain calm. The student has been taken to hospital by staff. Parents will be informed by the office.
+  Why: Safety/security terms present in a school context: 'hospital'. Requires immediate verification with the concerned staff.
+  Sources (1): Class 9 Parents @ 2026-10-10 12:25
+
+  Evidence: "Please remain calm. The student has been taken to hospital by staff. Parents will be informed by the office."
+  Next step: Verify immediately with concerned staff and inform Principal   (verified — direct source evidence attached)
+
+[HIGH] Bholi ko pariksha ko time table kaha pauna sakchhu?
+  Why: Examination/assessment mentioned with a near-term time reference ('bholi').
+  Sources (1): Class 8 Parents @ 2026-10-10 09:40
+
+  Evidence: "Bholi ko pariksha ko time table kaha pauna sakchhu?"
+  Next step: Assign follow-up today; confirm resolution   (verified — direct source evidence attached)
+
+[HIGH] Staff meeting tomorrow at 2:00 PM in the seminar hall to discuss the terminal exam schedule.
+  Why: Examination/assessment mentioned with a near-term time reference ('tomorrow').
+  Sources (1): Teachers Academic Coordination @ 2026-10-10 15:00
+
+  Evidence: "Staff meeting tomorrow at 2:00 PM in the seminar hall to discuss the terminal exam schedule."
+  Next step: Assign follow-up today; confirm resolution   (verified — direct source evidence attached)
+
+
+======================================================================
+C. CLASS-WISE SUMMARY
+----------------------------------------------------------------------
+Playgroup: no group configured
+
+Nursery: no group configured
+
+LKG: no group configured
+
+UKG: no group configured
+
+Class 1: 2 msgs | HW: 0 | Exam items: 0 | Concerns: 0 | Unanswered: 0 | Priority: LOW
+
+Class 2: no group configured
+
+Class 3: no group configured
+
+Class 4: DATA UNAVAILABLE (not zero activity) | Priority: UNKNOWN
+
+Class 5: 12 msgs | HW: 3 | Exam items: 2 | Concerns: 4 | Unanswered: 1 | Priority: MEDIUM
+
+Class 6: no group configured
+
+Class 7: no group configured
+
+Class 8: 6 msgs | HW: 2 | Exam items: 2 | Concerns: 3 | Unanswered: 1 | Priority: HIGH
+
+Class 9: 2 msgs | HW: 0 | Exam items: 0 | Concerns: 0 | Unanswered: 0 | Priority: CRITICAL
+
+Class 10: 3 msgs | HW: 1 | Exam items: 2 | Concerns: 0 | Unanswered: 0 | Priority: MEDIUM
+
+Class 11: no group configured
+
+Class 12: no group configured
+
+======================================================================
+D. EDUCATOR COORDINATION
+----------------------------------------------------------------------
+19 educator message(s); active groups: Class 1 Maths, Class 10 Maths, Class 5 Parents Notice, Class 5 Science, Class 8 Parents, Class 9 Parents, Teachers Academic Coordination
+Planning/resources: 5 item(s)
+Meetings/coordination: 5 item(s)
+Support requested: 2 item(s)
+Shared messages are evidence of COMMUNICATION, not proof an activity was completed. No teacher rankings are produced from message counts.
+
+======================================================================
+E. PARENT COMMUNICATION
+----------------------------------------------------------------------
+Questions: 6 total, 4 answered, 2 UNANSWERED
+  - "What time is the terminal examination for class 5? Routine not received yet." (Class 5 Science, 2026-10-10 15:01)
+  - "Please tell me the bus route number for [address redacted] area. Kina garne?" (Class 8 Parents, 2026-10-10 18:45)
+Concerns: 1  Positive feedback: 1
+Concerns are grouped and reported in neutral, respectful language; no parent is labelled.
+
+======================================================================
+F. FACEBOOK PAGE REPORT
+----------------------------------------------------------------------
+Posts today: 0 | API connected: no
+No posts recorded for this window.
+
+======================================================================
+G. UPCOMING DEADLINES
+----------------------------------------------------------------------
+2026-10-10  शुभप्रभात अभिभावक। आजको गृहकार्य: गणित अभ्यास पृष्ठ 45, प्रश्न 1-10।  (Class 8 Parents)
+2026-10-10  बधाई छ! आजको गणित प्रतियोगितामा विद्यार्थीले राम्रो प्रदर्शन गरे।  (Class 8 Parents)
+2026-10-10  Notice: Transport route changes will be announced on the notice board today.  (Teachers Academic Coordination)
+2026-10-11  Ma'am, is the homework for tomorrow or for Monday? Please clarify.  (Class 5 Science)
+2026-10-11  Bholi ko pariksha ko time table kaha pauna sakchhu?  (Class 8 Parents)
+2026-10-11  Staff meeting tomorrow at 2:00 PM in the seminar hall to discuss the terminal exam schedule.  (Teachers Academic Coordination)
+2026-10-13  Homework: Exercise 3.2, questions 1 to 8. Due 2026-10-13.  (Class 10 Maths)
+2026-10-14  Homework: Draw and label the water cycle in the science notebook. Submit by 2026-10-14.  (Class 5 Science)
+2026-10-16  Class 10 unit test on algebra will be held on 2026-10-16. Syllabus: chapters 1-3.  (Class 10 Maths)
+2026-10-18  Training on continuous assessment for all teachers is planned for 2026-10-18. Attendance is compulsory.  (Teachers Academic Coordination)
+2026-10-20  Terminal examination routine for Class 5 to 8 will be published on 2026-10-20. Please prepare accordingly.  (Class 8 Parents)
+
+
+======================================================================
+H. PRINCIPAL'S ACTION PLAN
+----------------------------------------------------------------------
+[CRITICAL] Verify critical safety signal | role: Principal | deadline: 2026-10-11
+    evidence: Class 9 Parents: "URGENT!!!! Student injured in the school bus accident near the main gate. Please come to school imme"
+[CRITICAL] Verify critical safety signal | role: Principal | deadline: 2026-10-11
+    evidence: Class 9 Parents: "Please remain calm. The student has been taken to hospital by staff. Parents will be informed by the"
+[HIGH] Follow up high-priority matter | role: Coordinator | deadline: 2026-10-12
+    evidence: Class 8 Parents: "Bholi ko pariksha ko time table kaha pauna sakchhu?"
+[HIGH] Follow up high-priority matter | role: Coordinator | deadline: 2026-10-12
+    evidence: Teachers Academic Coordination: "Staff meeting tomorrow at 2:00 PM in the seminar hall to discuss the terminal exam schedule."
+[HIGH] Respond to 2 unanswered parent question(s) | role: Class Teacher | deadline: 2026-10-11
+    evidence: Class 5 Science: "What time is the terminal examination for class 5? Routine not received yet."
+[MEDIUM] Collect chat exports from 1 group(s) with no data today | role: Administrative Staff | deadline: 2026-10-11
+    evidence: source coverage: "no data received from: Class 4 Parents"
+
+
+======================================================================
+I. POSITIVE HIGHLIGHTS
+----------------------------------------------------------------------
+  * बधाई छ! आजको गणित प्रतियोगितामा विद्यार्थीले राम्रो प्रदर्शन गरे। (Class 8 Parents)
+  * Thank you so much for the excellent science project feedback! Very proud of my child. (Class 5 Science)
+
+
+======================================================================
+J. SOURCE COVERAGE & LIMITATIONS
+----------------------------------------------------------------------
+OK  Class 1 Maths (export_upload): 2 msg today, last sync 2026-10-11 00:57
+OK  Class 10 Maths (export_upload): 3 msg today, last sync 2026-10-11 00:57
+NO DATA Class 4 Parents (export_upload): 0 msg today, last sync never
+OK  Class 5 Parents Notice (export_upload): 1 msg today, last sync 2026-10-11 00:57
+OK  Class 5 Science (export_upload): 11 msg today, last sync 2026-10-11 00:57
+OK  Class 8 Parents (export_upload): 6 msg today, last sync 2026-10-11 00:57
+OK  Class 9 Parents (export_upload): 2 msg today, last sync 2026-10-11 00:57
+OK  Malformed Test Group (export_upload): 2 msg today, last sync 2026-10-11 00:57
+OK  Teachers Academic Coordination (export_upload): 6 msg today, last sync 2026-10-11 00:57
+Facebook: NOT connected — Meta integration not configured. Set KVI_FB_PAGE_ID and KVI_FB_ACCESS_TOKEN (see docs/META_FACEBOOK_SETUP.md). Manual post import remains available.
+
+Limitations:
+  - Hosted AI provider not configured — deterministic rules engine used (transparent by design).
+  - WhatsApp data comes only from authorized exports/uploads; the system has no live WhatsApp API connection and does not claim one.
+  - Facebook Page API is not connected — Meta integration not configured. Set KVI_FB_PAGE_ID and KVI_FB_ACCESS_TOKEN (see docs/META_FACEBOOK_SETUP.md). Manual post import remains available.
+  - 1 registered group(s) provided no data for this reporting day: Class 4 Parents.
+  - Findings labelled 'verified' quote real imported content; 'inferred' items are interpretations; recommendations are suggestions only.
+
+======================================================================
+K. TOMORROW'S FOCUS
+----------------------------------------------------------------------
+1. Resolve/verify 2 critical alert(s) first thing in the morning.
+2. Respond to 2 unanswered parent question(s) through the concerned class teachers.
+3. Prepare for the nearest announced item: शुभप्रभात अभिभावक। आजको गृहकार्य: गणित अभ्यास पृष्ठ 45, प्रश्न 1-10। (2026-10-10).
+4. Assign and track 2 high-priority follow-up(s) in the action tracker.
+5. Review data coverage — ensure tomorrow's report receives exports from all registered groups.
+
+----------------------------------------------------------------------
+Kashyap Vidyapeeth Inaruwa · Inaruwa-4, Sunsari, Koshi Province, Nepal
+Report ID 3eca0d3ead624ed79a857fc643ee7c96 · Confidential — authorized leadership use only.

@@ -1,0 +1,6 @@
+[10/10/26, 7:30:00 AM] Class Teacher B: शुभप्रभात अभिभावक। आजको गृहकार्य: गणित अभ्यास पृष्ठ 45, प्रश्न 1-10।
+[10/10/26, 9:05:00 AM] Parent 7: मेरो छोरीको गृहकार्य कहिले बुझाउने हो? कृपया बताउनुहोस्।
+[10/10/26, 9:40:00 AM] Parent 8: Bholi ko pariksha ko time table kaha pauna sakchhu?
+[10/10/26, 11:00:00 AM] Class Teacher B: बधाई छ! आजको गणित प्रतियोगितामा विद्यार्थीले राम्रो प्रदर्शन गरे।
+[10/10/26, 1:15:00 PM] Parent 9: Terminal examination routine for Class 5 to 8 will be published on 2026-10-20. Please prepare accordingly.
+[10/10/26, 6:45:00 PM] Parent 10: Please tell me the bus route number for ward 4 area. Kina garne?

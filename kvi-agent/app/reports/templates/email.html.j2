@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ school }} | Daily School Intelligence Report | {{ d.report_date }}</title>
+<style>
+  table { table-layout: fixed; }
+  td, th { overflow-wrap: anywhere; word-break: break-word; }
+  @media (max-width: 600px) {
+    td, th { padding: 5px !important; font-size: 12px !important; }
+    h2 { font-size: 15px !important; }
+    .kvi-pad { padding: 14px !important; }
+  }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f4f6f9;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#22303e;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f4f6f9;padding:16px 8px;">
+<tr><td align="center">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:860px;background:#ffffff;border-radius:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,40,80,.12);">
+
+  <!-- Header -->
+  <tr><td style="background:#003d7a;padding:22px 28px;">
+    <div style="color:#e5c158;font-size:12px;letter-spacing:2px;text-transform:uppercase;">{{ school }}</div>
+    <div style="color:#ffffff;font-size:22px;font-weight:700;margin-top:4px;">Daily School Intelligence Report</div>
+    <div style="color:#bcd3ea;font-size:13px;margin-top:8px;">
+      {{ address }} &nbsp;·&nbsp; {{ d.report_date }}
+      {%- if d.nepali_date %} &nbsp;·&nbsp; <span lang="ne">{{ d.nepali_date }}</span>{% endif %}
+    </div>
+  </td></tr>
+
+  <!-- Meta bar -->
+  <tr><td style="background:#f0f4f9;padding:10px 28px;font-size:12.5px;color:#3c5470;border-bottom:1px solid #dde5ee;">
+    <b>Generated at:</b> {{ generated_at_npt }} NPT &nbsp;·&nbsp;
+    <b>Data coverage:</b> {{ d.coverage.groups_with_data }}/{{ d.coverage.groups_total }} groups +
+      Facebook {{ 'connected' if d.coverage.facebook.connected else ('manual import only' if d.coverage.facebook.configured else 'not configured') }}
+    &nbsp;·&nbsp; <b>Analysis engine:</b> {{ d.engine }}
+    &nbsp;·&nbsp; <b>Report&nbsp;ID:</b> {{ report_uid }}
+  </td></tr>
+
+  {% if d.no_data %}
+  <tr><td style="padding:28px;">
+    <div style="background:#fff4e0;border:1px solid #e5b76a;border-radius:8px;padding:18px;">
+      <b style="color:#8a5b00;">⚠ DATA UNAVAILABLE — this is not a normal daily summary.</b>
+      <p style="margin:8px 0 0;font-size:14px;">No authorized source data (WhatsApp exports, Facebook posts or manual
+      imports) was received for {{ d.report_date }}. Sections below are therefore empty by fact, not by omission.
+      Please upload today's group exports through the dashboard and regenerate the report.</p>
+    </div>
+  </td></tr>
+  {% endif %}
+
+  <tr><td class="kvi-pad" style="padding:22px 28px;">
+
+  <!-- A. Executive Briefing -->
+  <h2 style="font-size:17px;color:#003d7a;border-bottom:2px solid #d4af37;padding-bottom:6px;margin:0 0 12px;">A. Principal's Executive Briefing</h2>
+  <ul style="margin:0 0 6px;padding-left:20px;font-size:14px;line-height:1.65;">
+    {% for b in d.executive_bullets %}<li style="margin-bottom:6px;">{{ b }}</li>{% endfor %}
+  </ul>
+  {% if d.nepali_summary %}
+  <div lang="ne" style="background:#f7f9fc;border-left:4px solid #d4af37;padding:12px 14px;margin:12px 0;font-size:14px;line-height:1.8;">
+    <b style="color:#003d7a;">नेपाली सारांश:</b> {{ d.nepali_summary }}
+  </div>
+  {% endif %}
+
+  <!-- B. Critical Alerts -->
+  <h2 style="font-size:17px;color:#003d7a;border-bottom:2px solid #d4af37;padding-bottom:6px;margin:26px 0 12px;">B. Critical &amp; High-Priority Alerts</h2>
+  {% set real_alerts = d.alerts | rejectattr('priority','equalto','POSITIVE') | list %}
+  {% if real_alerts %}
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;font-size:13.5px;">
+    {% for a in real_alerts %}
+    <tr>
+      <td style="padding:10px 12px;border:1px solid #dde5ee;vertical-align:top;width:90px;">
+        <span style="display:inline-block;padding:3px 9px;border-radius:12px;font-size:11px;font-weight:700;color:#fff;background:{{ '#b3261e' if a.priority=='CRITICAL' else '#c77700' }};">{{ a.priority }}</span>
+      </td>
+      <td style="padding:10px 12px;border:1px solid #dde5ee;">
+        <div style="font-weight:600;margin-bottom:4px;">{{ a.issue }}</div>
+        <div style="color:#5a6b7d;font-size:12.5px;"><b>Why:</b> {{ a.reason }}</div>
+        <div style="color:#5a6b7d;font-size:12.5px;margin-top:2px;"><b>Sources ({{ a.cross_source_count }}):</b>
+          {% for s in a.sources %}{{ s.source }}{% if s.ts %} @ {{ s.ts }}{% endif %}{% if not loop.last %}; {% endif %}{% endfor %}</div>
+        <div style="color:#1e5a96;font-size:12.5px;margin-top:2px;"><b>Next step:</b> {{ a.next_step }}</div>
+        <div style="color:#7a8794;font-size:11.5px;margin-top:2px;"><i>{{ a.status }}</i></div>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+  <p style="font-size:14px;background:#eef6ee;border:1px solid #bcd9bc;padding:10px 14px;border-radius:6px;margin:0;">
+  ✓ No critical or high-priority issue was identified in the available data for this reporting day.
+  {%- if d.coverage.groups_missing_today %} (Note: {{ d.coverage.groups_missing_today|length }} group(s) had no data — absence of alerts is not proof of absence of issues there.){% endif %}</p>
+  {% endif %}
+
+  <!-- C. Class-wise Summary -->
+  <h2 style="font-size:17px;color:#003d7a;border-bottom:2px solid #d4af37;padding-bottom:6px;margin:26px 0 12px;">C. Class-wise Summary</h2>
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;font-size:13px;">
+    <tr style="background:#003d7a;color:#fff;">
+      <th style="padding:8px;border:1px solid #2a5a8a;text-align:left;">Class</th>
+      <th style="padding:8px;border:1px solid #2a5a8a;text-align:left;">Academic Updates</th>
+      <th style="padding:8px;border:1px solid #2a5a8a;text-align:left;">Parent Concerns</th>
+      <th style="padding:8px;border:1px solid #2a5a8a;text-align:left;">Pending Actions</th>
+      <th style="padding:8px;border:1px solid #2a5a8a;text-align:left;">Priority</th>
+    </tr>
+    {% for r in d.class_rows %}
+    <tr style="background:{{ '#f7f9fc' if loop.index0 % 2 else '#ffffff' }};">
+      <td style="padding:7px 8px;border:1px solid #dde5ee;font-weight:600;">{{ r.class }}</td>
+      <td style="padding:7px 8px;border:1px solid #dde5ee;">
+        {% if r.data_status == 'no_data' %}<span style="color:#8a5b00;">⚠ data unavailable (not zero activity)</span>
+        {% elif r.data_status == 'not_configured' %}<span style="color:#7a8794;">no group configured</span>
+        {% else %}{{ r.messages }} msg{{ 's' if r.messages != 1 }}
+          {% if r.homework %}<br>📘 HW: {{ r.homework[0][:90] }}{% if r.homework|length > 1 %} (+{{ r.homework|length - 1 }} more){% endif %}{% endif %}
+          {% if r.exams %}<br>📝 Exam: {{ r.exams[0][:90] }}{% endif %}
+        {% endif %}
+      </td>
+      <td style="padding:7px 8px;border:1px solid #dde5ee;">
+        {% if r.data_status == 'available' %}
+          {% if r.parent_concerns %}{{ r.parent_concerns[0][:90] }}{% if r.parent_concerns|length > 1 %} (+{{ r.parent_concerns|length - 1 }}){% endif %}{% else %}—{% endif %}
+          {% if r.unanswered %}<br><span style="color:#b3261e;">{{ r.unanswered|length }} unanswered ❓</span>{% endif %}
+        {% else %}—{% endif %}
+      </td>
+      <td style="padding:7px 8px;border:1px solid #dde5ee;">{{ r.pending_actions|join('; ') if r.pending_actions else '—' }}</td>
+      <td style="padding:7px 8px;border:1px solid #dde5ee;">
+        {% set pcol = {'CRITICAL':'#b3261e','HIGH':'#c77700','MEDIUM':'#1e5a96','LOW':'#4a7c59','POSITIVE':'#2e7d32','UNKNOWN':'#7a8794'} %}
+        <span style="color:{{ pcol.get(r.priority,'#333') }};font-weight:700;">{{ r.priority }}</span></td>
+    </tr>
+    {% endfor %}
+  </table>
+  <p style="font-size:11.5px;color:#7a8794;margin:6px 0 0;">Message volume is not a measure of teaching quality. "data unavailable" means no export was received — it does not mean nothing happened.</p>
+
+  <!-- D. Educator Coordination -->
+  <h2 style="font-size:17px;color:#003d7a;border-bottom:2px solid #d4af37;padding-bottom:6px;margin:26px 0 12px;">D. Educator Coordination</h2>
+  <p style="font-size:13.5px;margin:0 0 8px;">{{ d.educator.messages }} educator-related message(s) across
+    {{ d.educator.groups_active|length if d.educator.groups_active else 0 }} group(s){% if d.educator.groups_active %}: {{ d.educator.groups_active|join(', ') }}{% endif %}.</p>
+  {% macro evlist(rows, empty) %}
+    {% if rows %}<ul style="margin:4px 0 10px;padding-left:18px;font-size:13px;line-height:1.6;">
+      {% for it in rows %}<li>{{ it.excerpt[:150] }} <span style="color:#7a8794;">— {{ it.source }}{% if it.ts %}, {{ it.ts }}{% endif %}</span></li>{% endfor %}
+    </ul>{% else %}<p style="font-size:13px;color:#7a8794;margin:4px 0 10px;">{{ empty }}</p>{% endif %}
+  {% endmacro %}
+  <div style="font-size:13.5px;"><b>Planning &amp; resources shared:</b></div>
+  {{ evlist(d.educator.planning_resources, 'No lesson-planning or resource messages in the available data.') }}
+  <div style="font-size:13.5px;"><b>Meetings, instructions &amp; coordination:</b></div>
+  {{ evlist(d.educator.meetings_coordination, 'None recorded.') }}
+  <div style="font-size:13.5px;"><b>Assessment updates:</b></div>
+  {{ evlist(d.educator.assessment_updates, 'None recorded.') }}
+  <div style="font-size:13.5px;"><b>Support requested by educators:</b></div>
+  {{ evlist(d.educator.support_requested, 'None recorded.') }}
+  <p style="font-size:11.5px;color:#7a8794;margin:0;">{{ d.educator.note }}</p>
+
+  <!-- E. Parent Communication -->
+  <h2 style="font-size:17px;color:#003d7a;border-bottom:2px solid #d4af37;padding-bottom:6px;margin:26px 0 12px;">E. Parent Communication</h2>
+  <p style="font-size:13.5px;margin:0 0 8px;">
+    {{ d.parent.questions_total }} question(s) · {{ d.parent.answered }} answered ·
+    <b style="color:{{ '#b3261e' if d.parent.unanswered_count else '#2e7d32' }}">{{ d.parent.unanswered_count }} unanswered</b>
+    · {{ d.parent.concerns|length }} concern(s) · {{ d.parent.positive_feedback|length }} positive feedback
+  </p>
+  {% if d.parent.question_clusters %}
+  <div style="font-size:13.5px;"><b>Frequently raised questions (grouped):</b></div>
+  <ul style="margin:4px 0 10px;padding-left:18px;font-size:13px;line-height:1.6;">
+    {% for q in d.parent.question_clusters %}<li>“{{ q.question[:140] }}” <span style="color:#7a8794;">×{{ q.occurrences }} — {{ q.sources|join(', ') }}</span></li>{% endfor %}
+  </ul>{% endif %}
+  {% if d.parent.unanswered %}
+  <div style="font-size:13.5px;color:#b3261e;"><b>Awaiting response:</b></div>
+  <ul style="margin:4px 0 10px;padding-left:18px;font-size:13px;line-height:1.6;">
+    {% for u in d.parent.unanswered %}<li>{{ u.excerpt[:150] }} <span style="color:#7a8794;">— {{ u.source }}, {{ u.ts }}</span></li>{% endfor %}
+  </ul>{% endif %}
+  <p style="font-size:11.5px;color:#7a8794;margin:0;">{{ d.parent.tone_note }}</p>
+
+  <!-- F. Facebook -->
+  <h2 style="font-size:17px;color:#003d7a;border-bottom:2px solid #d4af37;padding-bottom:6px;margin:26px 0 12px;">F. Facebook Page Report</h2>
+  {% if d.facebook.posts_today or d.facebook.connected %}
+  <p style="font-size:13.5px;margin:0 0 8px;">Posts today: <b>{{ d.facebook.posts_today }}</b>
+    {% if d.facebook.connected %} · API connected{% else %} · API not connected — data from manual import{% endif %}
+    {% if d.facebook.engagement_available %} · engagement figures shown are provider-reported only{% endif %}</p>
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;font-size:12.5px;">
+    {% for p in d.facebook.posts %}
+    <tr style="background:{{ '#f7f9fc' if loop.index0 % 2 else '#fff' }};">
+      <td style="padding:7px 8px;border:1px solid #dde5ee;">{{ p.excerpt[:180] }}
+        {% if p.permalink %}<br><a href="{{ p.permalink }}" style="color:#1e5a96;font-size:11.5px;">{{ p.permalink[:70] }}</a>{% endif %}
+        {% if p.source_kind == 'manual' %}<span style="color:#8a5b00;font-size:11px;">(manual import)</span>{% endif %}
+      </td>
+      <td style="padding:7px 8px;border:1px solid #dde5ee;width:150px;">
+        Reactions: {{ p.reactions if p.reactions is not none else 'n/a' }}<br>
+        Comments: {{ p.comments if p.comments is not none else 'n/a' }}<br>
+        Shares: {{ p.shares if p.shares is not none else 'n/a' }}
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% if d.facebook.questions_needing_response %}
+  <div style="font-size:13.5px;margin-top:8px;"><b>Comment questions needing an official response:</b></div>
+  <ul style="margin:4px 0;padding-left:18px;font-size:13px;">
+    {% for q in d.facebook.questions_needing_response %}<li>{{ q.comment[:150] }} <span style="color:#7a8794;">— {{ q.from }}</span></li>{% endfor %}
+  </ul>{% endif %}
+  {% else %}
+  <p style="font-size:13px;color:#7a8794;">No page posts recorded in this window. {{ d.facebook.status_detail }}</p>
+  {% endif %}
+  <p style="font-size:11.5px;color:#7a8794;margin:6px 0 0;">{{ d.facebook.honesty_note }}</p>
+
+  <!-- G. Deadlines -->
+  <h2 style="font-size:17px;color:#003d7a;border-bottom:2px solid #d4af37;padding-bottom:6px;margin:26px 0 12px;">G. Upcoming Deadlines &amp; Events</h2>
+  {% if d.deadlines %}
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;font-size:13px;">
+    <tr style="background:#003d7a;color:#fff;"><th style="padding:7px;border:1px solid #2a5a8a;text-align:left;">Date</th><th style="padding:7px;border:1px solid #2a5a8a;text-align:left;">Item</th><th style="padding:7px;border:1px solid #2a5a8a;text-align:left;">Source</th></tr>
+    {% for dl in d.deadlines %}
+    <tr><td style="padding:6px 8px;border:1px solid #dde5ee;font-weight:600;">{{ dl.date }}</td>
+        <td style="padding:6px 8px;border:1px solid #dde5ee;">{{ dl.what }}</td>
+        <td style="padding:6px 8px;border:1px solid #dde5ee;color:#5a6b7d;">{{ dl.source }} ({{ dl.platform }})</td></tr>
+    {% endfor %}
+  </table>
+  <p style="font-size:11.5px;color:#7a8794;margin:4px 0 0;">Only dates explicitly stated in source messages are listed — none are inferred or invented.</p>
+  {% else %}<p style="font-size:13.5px;color:#7a8794;">No explicitly-dated upcoming items were found in the available data.</p>{% endif %}
+
+  <!-- H. Action Plan -->
+  <h2 style="font-size:17px;color:#003d7a;border-bottom:2px solid #d4af37;padding-bottom:6px;margin:26px 0 12px;">H. Principal's Action Plan</h2>
+  {% if d.actions %}
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;font-size:13px;">
+    <tr style="background:#003d7a;color:#fff;">
+      <th style="padding:7px;border:1px solid #2a5a8a;text-align:left;">Priority</th>
+      <th style="padding:7px;border:1px solid #2a5a8a;text-align:left;">Recommended Action</th>
+      <th style="padding:7px;border:1px solid #2a5a8a;text-align:left;">Suggested Role</th>
+      <th style="padding:7px;border:1px solid #2a5a8a;text-align:left;">Deadline</th>
+      <th style="padding:7px;border:1px solid #2a5a8a;text-align:left;">Evidence</th>
+    </tr>
+    {% for a in d.actions %}
+    <tr style="background:{{ '#f7f9fc' if loop.index0 % 2 else '#fff' }};">
+      <td style="padding:6px 8px;border:1px solid #dde5ee;"><span style="background:{{ '#b3261e' if a.priority=='CRITICAL' else ('#c77700' if a.priority=='HIGH' else '#1e5a96') }};color:#fff;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:700;">{{ a.priority }}</span></td>
+      <td style="padding:6px 8px;border:1px solid #dde5ee;"><b>{{ a.title }}</b>{% if a.detail %}<br><span style="color:#5a6b7d;font-size:12px;">{{ a.detail[:150] }}</span>{% endif %}</td>
+      <td style="padding:6px 8px;border:1px solid #dde5ee;">{{ a.role }}</td>
+      <td style="padding:6px 8px;border:1px solid #dde5ee;">{{ a.deadline }}</td>
+      <td style="padding:6px 8px;border:1px solid #dde5ee;font-size:12px;color:#5a6b7d;">
+        {% for e in a.evidence[:2] %}{{ e.source }}: “{{ e.excerpt[:80] }}”{% if not loop.last %}<br>{% endif %}{% endfor %}
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}<p style="font-size:13.5px;color:#2e7d32;">No action items generated from the available data.</p>{% endif %}
+
+  <!-- I. Positives -->
+  <h2 style="font-size:17px;color:#003d7a;border-bottom:2px solid #d4af37;padding-bottom:6px;margin:26px 0 12px;">I. Positive Highlights</h2>
+  {% if d.positives %}
+  <ul style="margin:0;padding-left:18px;font-size:13.5px;line-height:1.7;">
+    {% for p in d.positives %}<li>🌟 {{ p.text[:180] }} <span style="color:#7a8794;font-size:12px;">— {{ p.sources[0].source }}{% if p.cross_source_count > 1 %} (+{{ p.cross_source_count - 1 }} source(s)){% endif %}</span></li>{% endfor %}
+  </ul>
+  {% else %}<p style="font-size:13.5px;color:#7a8794;">No recognition/achievement content detected in the available data.</p>{% endif %}
+
+  <!-- J. Coverage & Limitations -->
+  <h2 style="font-size:17px;color:#003d7a;border-bottom:2px solid #d4af37;padding-bottom:6px;margin:26px 0 12px;">J. Source Coverage &amp; Limitations</h2>
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;font-size:12.5px;">
+    <tr style="background:#003d7a;color:#fff;"><th style="padding:6px;border:1px solid #2a5a8a;text-align:left;">Source</th><th style="padding:6px;border:1px solid #2a5a8a;text-align:left;">Method</th><th style="padding:6px;border:1px solid #2a5a8a;text-align:left;">Today</th><th style="padding:6px;border:1px solid #2a5a8a;text-align:left;">Last sync</th><th style="padding:6px;border:1px solid #2a5a8a;text-align:left;">State</th></tr>
+    {% for g in d.coverage.group_detail %}
+    <tr style="background:{{ '#f7f9fc' if loop.index0 % 2 else '#fff' }};">
+      <td style="padding:5px 8px;border:1px solid #dde5ee;">{{ g.name }}</td>
+      <td style="padding:5px 8px;border:1px solid #dde5ee;">{{ g.method }}</td>
+      <td style="padding:5px 8px;border:1px solid #dde5ee;">{{ g.messages_today }} msg</td>
+      <td style="padding:5px 8px;border:1px solid #dde5ee;">{{ g.last_sync_at or 'never' }}</td>
+      <td style="padding:5px 8px;border:1px solid #dde5ee;color:{{ '#2e7d32' if g.state=='data-received' else '#b3261e' }};">{{ '✔ data received' if g.state=='data-received' else '✘ NO DATA today' }}</td>
+    </tr>
+    {% endfor %}
+    <tr>
+      <td style="padding:5px 8px;border:1px solid #dde5ee;">Facebook Page</td>
+      <td style="padding:5px 8px;border:1px solid #dde5ee;">{{ 'Graph API' if d.coverage.facebook.connected else 'manual import / not configured' }}</td>
+      <td style="padding:5px 8px;border:1px solid #dde5ee;">{{ d.facebook.posts_today }} post(s)</td>
+      <td style="padding:5px 8px;border:1px solid #dde5ee;">—</td>
+      <td style="padding:5px 8px;border:1px solid #dde5ee;color:{{ '#2e7d32' if d.coverage.facebook.connected else '#8a5b00' }};">{{ '✔ connected' if d.coverage.facebook.connected else '⚠ ' ~ (d.coverage.facebook.detail or 'not connected') }}</td>
+    </tr>
+  </table>
+  <ul style="margin:10px 0 0;padding-left:18px;font-size:12.5px;color:#5a6b7d;line-height:1.6;">
+    {% for l in d.limitations %}<li>{{ l }}</li>{% endfor %}
+  </ul>
+
+  <!-- K. Tomorrow's Focus -->
+  <h2 style="font-size:17px;color:#003d7a;border-bottom:2px solid #d4af37;padding-bottom:6px;margin:26px 0 12px;">K. Tomorrow's Focus</h2>
+  <ol style="margin:0;padding-left:20px;font-size:13.5px;line-height:1.7;">
+    {% for f in d.tomorrow_focus %}<li>{{ f }}</li>{% endfor %}
+  </ol>
+
+  </td></tr>
+
+  <!-- Footer -->
+  <tr><td style="background:#003d7a;padding:16px 28px;color:#bcd3ea;font-size:12px;">
+    <div><b style="color:#fff;">{{ school }}</b> · {{ address }}</div>
+    <div style="margin-top:6px;">
+      {% if dashboard_url %}Detailed evidence, searchable archive and history: <a href="{{ dashboard_url }}" style="color:#e5c158;">secure dashboard</a> · {% endif %}
+      Report ID {{ report_uid }} · Generated automatically at {{ generated_at_npt }} NPT.
+    </div>
+    <div style="margin-top:6px;color:#8fb0d0;">Confidential — contains school communication summaries for authorized leadership use only.
+    Evidence quotes are redacted of phone numbers and emails.</div>
+  </td></tr>
+</table>
+</td></tr></table>
+</body>
+</html>

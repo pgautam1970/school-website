@@ -1,0 +1,99 @@
+{{ school | upper }}
+DAILY SCHOOL INTELLIGENCE REPORT
+Reporting date: {{ d.report_date }}{% if d.nepali_date %}  ({{ d.nepali_date }}){% endif %}
+
+Generated at: {{ generated_at_npt }} NPT
+Data coverage: {{ d.coverage.groups_with_data }}/{{ d.coverage.groups_total }} WhatsApp groups + Facebook {{ 'connected' if d.coverage.facebook.connected else 'not connected (manual import only)' }}
+Analysis engine: {{ d.engine }}   Report ID: {{ report_uid }}
+{% if d.no_data %}
+*** DATA UNAVAILABLE — no authorized source data was received for {{ d.report_date }}.
+*** This is a data-unavailability notice, NOT a normal daily summary.
+{% endif %}
+======================================================================
+A. PRINCIPAL'S EXECUTIVE BRIEFING
+----------------------------------------------------------------------
+{% for b in d.executive_bullets %}{{ loop.index }}. {{ b }}
+{% endfor %}
+{% if d.nepali_summary %}नेपाली सारांश: {{ d.nepali_summary }}
+{% endif %}
+======================================================================
+B. CRITICAL & HIGH-PRIORITY ALERTS
+----------------------------------------------------------------------
+{% set real_alerts = d.alerts | rejectattr('priority','equalto','POSITIVE') | list %}
+{% if real_alerts %}{% for a in real_alerts %}[{{ a.priority }}] {{ a.issue }}
+  Why: {{ a.reason }}
+  Sources ({{ a.cross_source_count }}): {% for s in a.sources %}{{ s.source }}{% if s.ts %} @ {{ s.ts }}{% endif %}{% if not loop.last %}; {% endif %}{% endfor %}
+
+  Evidence: "{{ a.sources[0].excerpt[:200] }}"
+  Next step: {{ a.next_step }}   ({{ a.status }})
+
+{% endfor %}{% else %}No critical or high-priority issue was identified in the available data.{% if d.coverage.groups_missing_today %}
+(Note: {{ d.coverage.groups_missing_today | length }} group(s) had no data today.){% endif %}
+{% endif %}
+======================================================================
+C. CLASS-WISE SUMMARY
+----------------------------------------------------------------------
+{% for r in d.class_rows %}{{ r.class }}: {% if r.data_status == 'no_data' %}DATA UNAVAILABLE (not zero activity) | Priority: UNKNOWN{% elif r.data_status == 'not_configured' %}no group configured{% else %}{{ r.messages }} msgs | HW: {{ r.homework | length }} | Exam items: {{ r.exams | length }} | Concerns: {{ r.parent_concerns | length }} | Unanswered: {{ r.unanswered | length }} | Priority: {{ r.priority }}{% endif %}
+
+{% endfor %}======================================================================
+D. EDUCATOR COORDINATION
+----------------------------------------------------------------------
+{{ d.educator.messages }} educator message(s); active groups: {{ d.educator.groups_active | join(', ') if d.educator.groups_active else 'none' }}
+Planning/resources: {{ d.educator.planning_resources | length }} item(s)
+Meetings/coordination: {{ d.educator.meetings_coordination | length }} item(s)
+Support requested: {{ d.educator.support_requested | length }} item(s)
+{{ d.educator.note }}
+
+======================================================================
+E. PARENT COMMUNICATION
+----------------------------------------------------------------------
+Questions: {{ d.parent.questions_total }} total, {{ d.parent.answered }} answered, {{ d.parent.unanswered_count }} UNANSWERED
+{% for u in d.parent.unanswered %}  - "{{ u.excerpt[:140] }}" ({{ u.source }}, {{ u.ts }})
+{% endfor %}Concerns: {{ d.parent.concerns | length }}  Positive feedback: {{ d.parent.positive_feedback | length }}
+{{ d.parent.tone_note }}
+
+======================================================================
+F. FACEBOOK PAGE REPORT
+----------------------------------------------------------------------
+Posts today: {{ d.facebook.posts_today }} | API connected: {{ 'yes' if d.facebook.connected else 'no' }}
+{% for p in d.facebook.posts %}  - {{ p.excerpt[:150] }}
+    reactions: {{ p.reactions if p.reactions is not none else 'n/a' }}, comments: {{ p.comments if p.comments is not none else 'n/a' }}, shares: {{ p.shares if p.shares is not none else 'n/a' }} [{{ p.source_kind }}]
+{% endfor %}{{ d.facebook.honesty_note }}
+
+======================================================================
+G. UPCOMING DEADLINES
+----------------------------------------------------------------------
+{% if d.deadlines %}{% for dl in d.deadlines %}{{ dl.date }}  {{ dl.what[:120] }}  ({{ dl.source }})
+{% endfor %}{% else %}No explicitly-dated upcoming items found in available data.{% endif %}
+
+======================================================================
+H. PRINCIPAL'S ACTION PLAN
+----------------------------------------------------------------------
+{% for a in d.actions %}[{{ a.priority }}] {{ a.title }} | role: {{ a.role }} | deadline: {{ a.deadline }}
+    evidence: {{ a.evidence[0].source if a.evidence else '-' }}: "{{ a.evidence[0].excerpt[:100] if a.evidence else '' }}"
+{% endfor %}{% if not d.actions %}No action items generated.{% endif %}
+
+======================================================================
+I. POSITIVE HIGHLIGHTS
+----------------------------------------------------------------------
+{% for p in d.positives %}  * {{ p.text[:160] }} ({{ p.sources[0].source }})
+{% endfor %}{% if not d.positives %}No recognition/achievement content detected.{% endif %}
+
+======================================================================
+J. SOURCE COVERAGE & LIMITATIONS
+----------------------------------------------------------------------
+{% for g in d.coverage.group_detail %}{{ 'OK ' if g.state == 'data-received' else 'NO DATA' }} {{ g.name }} ({{ g.method }}): {{ g.messages_today }} msg today, last sync {{ g.last_sync_at or 'never' }}
+{% endfor %}Facebook: {{ 'connected' if d.coverage.facebook.connected else 'NOT connected — ' ~ (d.coverage.facebook.detail or '') }}
+
+Limitations:
+{% for l in d.limitations %}  - {{ l }}
+{% endfor %}
+======================================================================
+K. TOMORROW'S FOCUS
+----------------------------------------------------------------------
+{% for f in d.tomorrow_focus %}{{ loop.index }}. {{ f }}
+{% endfor %}
+----------------------------------------------------------------------
+{{ school }} · {{ address }}
+Report ID {{ report_uid }} · Confidential — authorized leadership use only.
+{% if dashboard_url %}Detailed evidence & archive: {{ dashboard_url }}{% endif %}

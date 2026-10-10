@@ -1,0 +1,12 @@
+.venv/
+data/*.db
+data/*.db-*
+data/imports/*
+!data/imports/.gitkeep
+data/reports/
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+backups/
+*.imported

@@ -1,0 +1,12 @@
+[10/10/26, 8:05:11 AM] Messages and calls are end-to-end encrypted. No one outside of this chat, not even WhatsApp, can read or listen to them.
+[10/10/26, 8:10:02 AM] Science Teacher A: Good morning parents. Today we studied the water cycle, chapter 4, pages 32-36.
+[10/10/26, 8:12:44 AM] Science Teacher A: Homework: Draw and label the water cycle in the science notebook. Submit by 2026-10-14.
+[10/10/26, 9:30:00 AM] Parent 1: Ma'am, is the homework for tomorrow or for Monday? Please clarify.
+[10/10/26, 10:15:20 AM] Parent 2: Aaja chhoraa lai jwaro cha, ketaa aaja school aauna sakdaina. Ke ghar ko kaam pachhi garna milchha?
+[10/10/26, 11:02:09 AM] Science Teacher A: Yes, the homework can be submitted on Monday. Thank you for asking.
+[10/10/26, 2:40:31 PM] Parent 3: Thank you so much for the excellent science project feedback! Very proud of my child.
+[10/10/26, 3:01:00 PM] Parent 4: What time is the terminal examination for class 5? Routine not received yet.
+[10/10/26, 4:20:00 PM] Class Teacher A: Reminder: Contact the office at +977 9800000001 or write to parent.test@example.com for fee queries.
+[10/10/26, 4:30:00 PM] Parent 5: <image omitted>
+[10/10/26, 4:31:00 PM] Parent 6: The bus is 20 minutes late every day this week, this is unacceptable. Please fix the route.
+[10/10/26, 5:00:00 PM] Science Teacher A: Terminal examination routine for Class 5 to 8 will be published on 2026-10-20. Please prepare accordingly.

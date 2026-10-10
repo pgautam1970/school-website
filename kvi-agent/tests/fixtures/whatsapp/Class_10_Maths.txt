@@ -1,0 +1,3 @@
+[10/10/26, 9:00:00 AM] Math Teacher E: Class 10 unit test on algebra will be held on 2026-10-16. Syllabus: chapters 1-3.
+[10/10/26, 9:01:00 AM] Math Teacher E: Homework: Exercise 3.2, questions 1 to 8. Due 2026-10-13.
+[10/10/26, 9:10:00 AM] Parent 13: Will the unit test include chapter 3 also? Please reply.
